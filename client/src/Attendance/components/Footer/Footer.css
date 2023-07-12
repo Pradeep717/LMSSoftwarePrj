@@ -1,0 +1,13 @@
+.footer{
+    margin: auto;
+    background-color: #0c8c8c;
+    color: aliceblue;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+    align-items: center;
+    padding: 25px 0;
+    
+}

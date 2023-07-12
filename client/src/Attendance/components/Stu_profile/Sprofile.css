@@ -1,0 +1,62 @@
+.maincard{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-bottom: 140px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    align-items: center;
+    /* text-align: center; */
+    box-shadow: 0 0 20px -10px;
+}
+.inneritems{
+    display: flex;
+    flex-direction: column;
+}
+.profilepic{
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+.editicon{
+    margin-left: 50%;
+    margin-bottom: 10px;
+}
+.uploadbtn{
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-left: 30%;
+    margin-right: auto;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0c8c8c;
+    color: white;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.uploadbtn:hover{
+    background-color: #096767;
+    color: white;
+    transition: 0.5s ease all;
+}
+.details{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.rowdet{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
