@@ -1,3 +1,5 @@
+import {BASE_URL} from '../../helper';
+
 import axios from "axios"
 
 
@@ -6,7 +8,7 @@ export const getAllNoticeAction = ()=> async dispatch =>{
         type:'GET_All_NOTICE_REQUEST'
     })
     try {
-        const response = await axios.get('http://localhost:5000/allnotice');
+        const response = await axios.get('BASE_URL/allnotice');
         console.log("reas",response)
         dispatch({
            type:'GET_All_NOTICE_SUCCESS',
@@ -26,7 +28,7 @@ export const addNoticeAction = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("http://localhost:5000/addnotice", user);
+        const res = await axios.post("BASE_URL/addnotice", user);
        
         dispatch({
             type: 'ADD_NOTICE_SUCCESS',
@@ -45,7 +47,7 @@ export const getAllClubAction = ()=> async dispatch =>{
         type:'GET_All_CLUB_REQUEST'
     })
     try {
-        const response = await axios.get('http://localhost:5000/allclub');
+        const response = await axios.get('BASE_URL/allclub');
         
         dispatch({
            type:'GET_All_CLUB_SUCCESS',
@@ -63,7 +65,7 @@ export const getClubJoinIssAction = ()=> async dispatch =>{
         type:'GET_CLUB_ISSUE_REQUEST'
     })
     try {
-        const response = await axios.get('http://localhost:5000/allissue');
+        const response = await axios.get('BASE_URL/allissue');
         
         dispatch({
            type:'GET_CLUB_ISSUE_SUCCESS',
@@ -84,7 +86,7 @@ export const addClubAction = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("http://localhost:5000/addclub", user);
+        const res = await axios.post("BASE_URL/addclub", user);
        
         dispatch({
             type: 'ADD_CLUB_SUCCESS',
@@ -104,7 +106,7 @@ export const addClubAction = (user) => async dispatch => {
 //     })
 
 //     try {
-//         const res = await axios.post("http://localhost:5000/addSub", user);
+//         const res = await axios.post("BASE_URL/addSub", user);
        
 //         dispatch({
 //             type: 'ADD_SUBJECT_SUCCESS',
@@ -124,7 +126,7 @@ export const addSubjectAction = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("http://localhost:5000/addSub", user);
+        const res = await axios.post("BASE_URL/addSub", user);
        
         dispatch({
             type: 'ADD_SUBJECT_SUCCESS',
@@ -148,7 +150,7 @@ export const deleteSingleStu = (user) => async dispatch => {
     });
   
     try {
-      const res = await axios.delete("http://localhost:5000/deleteStu", { data: user });
+      const res = await axios.delete("BASE_URL/deleteStu", { data: user });
   
       dispatch({
         type: 'DELETE_STUDENT_SUCCESS',
@@ -172,10 +174,10 @@ export const editSingleStu = (user) => async dispatch => {
     
   
     try {
-        const user = await axios.get("http://localhost:5000/getStu", {data: user})
+        const user = await axios.get("BASE_URL/getStu", {data: user})
         console.log(user);
 
-      const res = await axios.post("http://localhost:5000/stuUpd", { data: user });
+      const res = await axios.post("BASE_URL/stuUpd", { data: user });
   
       dispatch({
         type: 'DELETE_STUDENT_SUCCESS',
@@ -195,7 +197,7 @@ export const getAllSubAction = ()=> async dispatch =>{
         type:'GET_All_SUBJECT_REQUEST'
     })
     try {
-        const response = await axios.get('http://localhost:5000/allSub');
+        const response = await axios.get('BASE_URL/allSub');
         console.log("reas",response)
         dispatch({
            type:'GET_All_SUBJECT_SUCCESS',
@@ -213,8 +215,8 @@ export const getAllSubAction = ()=> async dispatch =>{
 export const acJoinRq = (id) => async dispatch => {
     console.log(id)
     try {
-        const res = await axios.post('http://localhost:5000/acjoinclub',{id});
-        const response = await axios.get('http://localhost:5000/allissue');
+        const res = await axios.post('BASE_URL/acjoinclub',{id});
+        const response = await axios.get('BASE_URL/allissue');
         
         dispatch({
            type:'GET_CLUB_ISSUE_SUCCESS',
@@ -236,13 +238,13 @@ export const reqToJoinClubAction = (user) => async dispatch => {
     })
     console.log(user)
     try {
-        const res = await axios.post("http://localhost:5000/joinclub", user);
+        const res = await axios.post("BASE_URL/joinclub", user);
        
         dispatch({
             type: 'JOIN_CLUB_SUCCESS',
             payload:res.data
         })
-        const response = await axios.get('http://localhost:5000/allclub');
+        const response = await axios.get('BASE_URL/allclub');
         
         dispatch({
            type:'GET_All_CLUB_SUCCESS',
@@ -262,7 +264,7 @@ export const AcReqToJoinClubAction = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("http://localhost:5000/acjoinclub", user);
+        const res = await axios.post("BASE_URL/acjoinclub", user);
        
         dispatch({
             type: 'ACJOIN_CLUB_SUCCESS',
@@ -281,7 +283,7 @@ export const getAllFaculty = ()=> async dispatch =>{
         type:'GET_All_FACULTY_REQUEST'
     })
     try {
-        const response = await axios.get('http://localhost:5000/getAllFac');
+        const response = await axios.get('BASE_URL/getAllFac');
         console.log("reas",response)
         dispatch({
            type:'GET_All_FACULTY_SUCCESS',
@@ -303,7 +305,7 @@ export const deleteSingleTeacher = (user) => async dispatch => {
     });
   
     try {
-      const res = await axios.delete("http://localhost:5000/deleteTeacher", { data: user });
+      const res = await axios.delete("BASE_URL/deleteTeacher", { data: user });
   
       dispatch({
         type: 'DELETE_STUDENT_SUCCESS',
