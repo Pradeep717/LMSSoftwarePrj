@@ -1,5 +1,10 @@
 import {BASE_URL} from '../../helper';
 import axios from "axios"
+
+console.log("URLs");
+console.log(BASE_URL);
+
+
 // import {useHistory} from 'react-router-dom'
 
 export const getStudentByClass = (clsName)=> async dispatch =>{
@@ -13,7 +18,7 @@ export const getStudentByClass = (clsName)=> async dispatch =>{
             payload:null
         })
        
-        const response = await axios.post('BASE_URL/getStuByClass',clsName);
+        const response = await axios.post(`${BASE_URL}/getStuByClass`,clsName);
          // console.log(response.data);
         dispatch({
            type:'GET_STUDENTS_SUCCESS',
@@ -36,7 +41,7 @@ export const getStuBySubject = (sub_code)=> async dispatch =>{
       })
     
       try {
-        const response = await axios.post('BASE_URL/getStuBySub', sub_code);
+        const response = await axios.post(`${BASE_URL}/getStuBySub`, sub_code);
         console.log("getStuBySubject response is");
         console.log(response.data);
         dispatch({
@@ -61,7 +66,7 @@ export const updateSubject = (sub_code, excel_marks) => async (dispatch) => {
     });
   
     try {
-      const response = await axios.post('BASE_URL/updateSubUrl', { sub_code, excel_marks });
+      const response = await axios.post(`${BASE_URL}/updateSubUrl`, { sub_code, excel_marks });
       console.log('getStuBySubject response is');
       console.log(response.data);
       dispatch({
@@ -106,7 +111,7 @@ export const getSubByBatch = (sub_class) => async dispatch => {
     })
   
     try {
-      const response = await axios.post('BASE_URL/getSubByBatch', sub_class);
+      const response = await axios.post(`${BASE_URL}/getSubByBatch`, sub_class);
       console.log(response.data);
       console.log("Hello");
       dispatch({
@@ -134,11 +139,11 @@ export const makeStuAttendance = (clsName,obj)=> async dispatch =>{
     };
     try {
         
-        const response = await axios.post('BASE_URL/makeAttdence',obj,config);
+        const response = await axios.post(`${BASE_URL}/makeAttdence`,obj,config);
 
         console.log("response",response);
       
-         const response1 = await axios.post('BASE_URL/getStuByClass',clsName);
+         const response1 = await axios.post(`${BASE_URL}/getStuByClass`,clsName);
         console.log(response1);
         // console.log("oksklsllsls")
         dispatch({
@@ -162,11 +167,11 @@ export const uploadStuMark = (clsName,obj)=> async dispatch =>{
     };
     try {
         
-        const response = await axios.post('BASE_URL/uploadMark',obj,config);
+        const response = await axios.post(`${BASE_URL}/uploadMark`,obj,config);
 
         console.log("response",response);
       
-         const response1 = await axios.post('BASE_URL/getStuByClass',clsName);
+         const response1 = await axios.post(`${BASE_URL}/getStuByClass`,clsName);
         console.log(response1);
         // console.log("oksklsllsls")
         dispatch({
@@ -186,7 +191,7 @@ export const getAllStudent = ()=> async dispatch =>{
         type:'GET_All_STUDENTS_REQUEST'
     })
     try {
-        const response = await axios.get('BASE_URL/getAllStuClass');
+        const response = await axios.get(`${BASE_URL}/getAllStuClass`);
         console.log("reas",response)
         dispatch({
            type:'GET_All_STUDENTS_SUCCESS',
@@ -205,7 +210,7 @@ export const getAllRportAction = ()=> async dispatch =>{
         type:'GET_All_REPORT_REQUEST'
     })
     try {
-        const response = await axios.get('BASE_URL/allreport');
+        const response = await axios.get(`${BASE_URL}/allreport`);
      
         dispatch({
            type:'GET_All_REPORT_SUCCESS',
@@ -225,7 +230,7 @@ export const addReportAction = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("BASE_URL/addreport", user);
+        const res = await axios.post(`${BASE_URL}/addreport`, user);
        
         dispatch({
             type: 'ADD_REPORT_SUCCESS',
@@ -246,7 +251,7 @@ export const updateTProfileAction = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("BASE_URL/api/teac/teaUpd", user);
+        const res = await axios.post(`${BASE_URL}/api/teac/teaUpd`, user);
        
         dispatch({
             type: 'UPDATE_TPROFILE_SUCCESS',
@@ -272,7 +277,7 @@ export const updateProfileAction = (user) => async dispatch => {
 
 
     try {
-        const res = await axios.post("BASE_URL/stuUpd", user);
+        const res = await axios.post(`${BASE_URL}/stuUpd`, user);
        
         dispatch({
             type: 'UPDATE_PROFILE_SUCCESS',
@@ -302,7 +307,7 @@ export const enrollSubjectAction = (subjectDetails,currentUserId) => async dispa
       type: 'ENROLL_SUBJECT_REQUEST',
     });
     try {
-      const res = await axios.post("BASE_URL/enrollSubject", {subjectDetails,currentUserId});
+      const res = await axios.post(`${BASE_URL}/enrollSubject`, {subjectDetails,currentUserId});
     //   const res = await axios.post("/getAllStuClass", subjectDetails);
       dispatch({
         type: 'ENROLL_SUBJECT_SUCCESS',

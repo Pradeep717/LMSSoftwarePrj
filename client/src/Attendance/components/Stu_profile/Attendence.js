@@ -57,7 +57,7 @@ const Attendance = () => {
           '#4B5000',
         
           ],
-          data: Dataset
+          data: Dataset 
         }
       ]
     }

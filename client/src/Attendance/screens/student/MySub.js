@@ -31,7 +31,7 @@ const MySub = () => {
   const handleEnrollSubject = (subjectDetails) => {
     if (
       enrollkeys[subjectDetails._id] &&
-      enrollkeys[subjectDetails._id] === subjectDetails.sub_enrollmentkey
+      enrollkeys[subjectDetails._id] == subjectDetails.sub_enrollmentkey
     ) {
       const currentUserId = currentUser && currentUser[0]._id;
       dispatch(enrollSubjectAction({ subjectDetails, currentUserId }));
@@ -66,7 +66,7 @@ const MySub = () => {
                 (currentUser &&
                   currentUser[0].subjects &&
                   currentUser[0].subjects.some(
-                    (subject) => subject.sub_code === item.sub_code
+                    (subject) => subject.sub_code == item.sub_code
                   )) ||
                 enrolledSubjects.includes(item.sub_code);
 

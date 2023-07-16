@@ -19,7 +19,7 @@ const SubjectData = (props) => {
 
   const { allSubject } = useSelector((state) => state.getAllSubReducer);
   const filteredSubject = allSubject.filter(
-    (subject) => subject.sub_code === props.match.params.id
+    (subject) => subject.sub_code == props.match.params.id
   );
   // console.log(filteredSubject);
 
@@ -69,7 +69,7 @@ const SubjectData = (props) => {
     const data = studentsBySub.map((student) => {
       // Find the marks for the current subject in the student's markList array
       const marks = student.markList.find(
-        (mark) => mark.subject === props.match.params.id
+        (mark) => mark.subject == props.match.params.id
       );
 
       return {

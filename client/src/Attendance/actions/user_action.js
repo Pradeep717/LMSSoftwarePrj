@@ -1,13 +1,15 @@
 import {BASE_URL} from '../../helper';
 import axios from 'axios';
+console.log("URLu");
+console.log(BASE_URL);
 
-export const registerUser = (user) => async dispatch => {
+export const registerUser = (user) => async dispatch => { 
     dispatch({
         type: 'USER_REGISTER_REQUEST'
     })
 
     try {
-        const res = await axios.post("BASE_URL/stuReg", user);
+        const res = await axios.post(`${BASE_URL}/stuReg`, user);
         console.log(res);
         dispatch({
             type: 'USER_REGISTER_SUCCESS'
@@ -26,7 +28,7 @@ export const registerTeacher = (user) => async dispatch => {
     })
 
     try {
-        const res = await axios.post("BASE_URL/teachReg", user);
+        const res = await axios.post(`${BASE_URL}/teachReg`, user);
         console.log(res);
         dispatch({
             type: 'USER_REGISTER_SUCCESS'
@@ -54,15 +56,16 @@ export const loginUser = (user,type) => async dispatch => {
              }
           
              if (type == "Student") {
-                 res =  await axios.post("BASE_URL/StuSign", user);
+                 res =  await axios.post(`${BASE_URL}/StuSign`, user);
             } else {
-                    res =  await axios.post("BASE_URL/signin", user);
+                    res =  await axios.post(`${BASE_URL}/signin`, user);
              }
           console.log(res) 
         } else {
             console.log(type, user);
             console.log("To backend");
-            res = await axios.post("BASE_URL/TecSign", user);
+            // res = await axios.post(`${BASE_URL}/TecSign`, user);
+            res = await axios.post(`${BASE_URL}/TecSign`, user);
         }
         
         
@@ -73,7 +76,7 @@ export const loginUser = (user,type) => async dispatch => {
         console.log(res.data)
         localStorage.setItem("jwt", res.data.token);
         localStorage.setItem('currentUser', JSON.stringify(res.data));
-        console.log(   type === "Teacher")
+        console.log(   type == "Teacher")
         if(type == "Teacher"){
             window.location.href = "/teacher/dashboard";
         } 
@@ -127,7 +130,7 @@ export const userProfile = (id,type="other") => async (dispatch, getState) => {
     console.log(id)
 
     try {
-        const response = await axios.post(`BASE_URL/${user_type}`,{id});
+        const response = await axios.post(`${BASE_URL}/${user_type}`,{id});
         console.log(response);
         dispatch({
             type: "USER_PROFILE_SUCCESS",
@@ -178,7 +181,7 @@ export const UpdateTProfile = (pic)=> async dispatch =>{
     try {
         //  await axios.post('/api/users/removeStudent',{postId});
         // const response2 = await axios.get(`/api/users/allStudent`);
-       const res = await axios.put(`BASE_URL/tupdatepic`, { pic }, config);
+       const res = await axios.put(`${BASE_URL}/tupdatepic`, { pic }, config);
        console.log(res)
         //   console.log(response)
         dispatch({
@@ -208,7 +211,7 @@ export const UpdateProfile = (pic)=> async dispatch =>{
     try {
         //  await axios.post('/api/users/removeStudent',{postId});
         // const response2 = await axios.get(`/api/users/allStudent`);
-       const res = await axios.put(`BASE_URL/updatepic`, { pic }, config);
+       const res = await axios.put(`${BASE_URL}/updatepic`, { pic }, config);
        console.log(res)
         //   console.log(response)
         dispatch({

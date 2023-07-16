@@ -81,7 +81,7 @@ const transporter = nodemailer.createTransport(
       .then((student) => {
         if (student) {
           // Find the mark for the current subject in the student's markList array
-          const mark = student.markList.find((mark) => mark.subject === subject);
+          const mark = student.markList.find((mark) => mark.subject == subject);
   
           if (mark) {
             // Update the mark's smark field

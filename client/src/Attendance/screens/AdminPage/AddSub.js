@@ -140,7 +140,7 @@ const AddSubject = () => {
                   <input
                     type="radio"
                     value="Compulsary"
-                    checked={selectedOption === "Compulsary"}
+                    checked={selectedOption == "Compulsary"}
                     onChange={(e) => setSelectedOption(e.target.value)}
                   />
                   Compulsary
@@ -151,7 +151,7 @@ const AddSubject = () => {
                   <input
                     type="radio"
                     value="Elective"
-                    checked={selectedOption === "Elective"}
+                    checked={selectedOption == "Elective"}
                     onChange={(e) => setSelectedOption(e.target.value)}
                   />
                   Elective

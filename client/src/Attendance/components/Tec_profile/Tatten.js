@@ -126,7 +126,7 @@ const Tatten = (props) => {
                <td>
                 
                 {item && item.pList && item.pList.includes(currentDate) ?<>
-                    {item.attdenList.filter(ele=>  ele.dateId === currentDate ) ? <>
+                    {item.attdenList.filter(ele=>  ele.dateId == currentDate ) ? <>
 
                        <p>{item.attdenList[item.attdenList.length-1].type}</p>
                     </>:<><p>okkk</p></>}

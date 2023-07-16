@@ -15,7 +15,7 @@ const Allstudent = () => {
     },[])
     const data =useSelector(state=>state.getAllStuReducer)
 
-    const Datafilter = data && data.allstudents && data.allstudents.filter(item => item.name != "Admin")
+    const Datafilter = data && data.allstudents && data.allstudents.filter(item => item.name !== "Admin")
 
      console.log(Datafilter)
    var  min = Math.ceil(1);

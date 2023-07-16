@@ -122,7 +122,7 @@ const SignUp  = ()=>{
             <input
               type="radio"
               value="Male"
-              checked={selectedOption === "Male"}
+              checked={selectedOption == "Male"}
               onChange={(e)=> setSelectedOption(e.target.value)}
             />
             Male
@@ -133,7 +133,7 @@ const SignUp  = ()=>{
             <input
               type="radio"
               value="Female"
-              checked={selectedOption === "Female"}
+              checked={selectedOption == "Female"}
               onChange={(e)=> setSelectedOption(e.target.value)}
             />
             Female
@@ -144,7 +144,7 @@ const SignUp  = ()=>{
             <input
               type="radio"
               value="Other"
-              checked={selectedOption === "Other"}
+              checked={selectedOption == "Other"}
               onChange={(e)=> setSelectedOption(e.target.value)}
             />
             Other
