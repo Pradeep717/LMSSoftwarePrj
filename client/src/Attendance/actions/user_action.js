@@ -47,6 +47,9 @@ export const loginUser = (user,type) => async dispatch => {
     dispatch({
         type: 'USER_LOGIN_REQUEST'
     })
+    console.log('Sign in user');
+    console.log(user);
+    console.log('Sign in user');
    
     try {
         var  res
@@ -81,7 +84,8 @@ export const loginUser = (user,type) => async dispatch => {
             window.location.href = "/teacher/dashboard";
         } 
         if(type == "Student") {
-            window.location.href = "/student/dashboard/enrollsubject";
+            // window.location.href = "/student/dashboard/enrollsubject";
+            window.location.href = "/student/dashboard";
         }
         if(type == "Admin"){
             localStorage.setItem("admin", type);

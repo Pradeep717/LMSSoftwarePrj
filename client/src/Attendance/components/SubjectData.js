@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStuBySubject } from '../actions/student_action';
@@ -119,8 +117,7 @@ const SubjectData = (props) => {
       .catch((err) => {
         console.log(err);
       });
-
-    // Read the file using a FileReader
+          // Read the file using a FileReader
     const reader = new FileReader();
     reader.onload = (e) => {
       // Parse the data in the file as an array buffer
@@ -136,9 +133,40 @@ const SubjectData = (props) => {
 
       // Update the uploadedData state with the new data
       setUploadedData(newData);
+
+      // Update the excelData state with the new data
+      setExcelData(newData);
+
+      // Send the updated data to the server
+      handleUpdate();
     };
     reader.readAsArrayBuffer(file);
   };
+
+  const handleUpdate = () => {
+    const data= JSON.stringify(excelData)
+    console.log("Hello1");
+    console.log(data);
+    console.log("Hello2");
+
+    // Send a POST request to the server with the updated data
+    // fetch('/api/update-student-marks', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(excelData)
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   // Handle the response from the server
+    //   console.log(data);
+    // })
+    // .catch(error => {
+    //   // Handle any errors
+    //   console.error(error);
+    // });
+  }
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -188,6 +216,203 @@ const SubjectData = (props) => {
 };
 
 export default SubjectData;
+
+      
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getStuBySubject } from '../actions/student_action';
+// import * as XLSX from 'xlsx';
+// import { getAllSubAction } from '../actions/admin_action';
+
+// const SubjectData = (props) => {
+//   const [error, setError] = useState(null);
+//   const [uploadedData, setUploadedData] = useState(null);
+//   const [excelData, setExcelData] = useState(null);
+
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     dispatch(getAllSubAction());
+//   }, []);
+
+//   const { allSubject } = useSelector((state) => state.getAllSubReducer);
+//   const filteredSubject = allSubject.filter(
+//     (subject) => subject.sub_code == props.match.params.id
+//   );
+//   // console.log(filteredSubject);
+
+//   useEffect(() => {
+//     try {
+//       var obj = {
+//         sub_code: props.match.params.id,
+//       };
+//       dispatch(getStuBySubject(obj));
+//     } catch (err) {
+//       setError(err.message);
+//     }
+//   }, [props.match.params.id]);
+
+//   useEffect(() => {
+//     if (filteredSubject.length > 0 && filteredSubject[0].excel_marks) {
+//       fetch(filteredSubject[0].excel_marks)
+//         .then((res) => res.arrayBuffer())
+//         .then((data) => {
+//           // Parse the data as an array buffer
+//           const workbook = XLSX.read(data, { type: 'array' });
+
+//           // Get the first worksheet in the workbook
+//           const sheetName = workbook.SheetNames[0];
+//           const worksheet = workbook.Sheets[sheetName];
+
+//           // Convert the worksheet data to an array of objects
+//           const newData = XLSX.utils.sheet_to_json(worksheet);
+
+//           // Update the excelData state with the new data
+//           setExcelData(newData);
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//         });
+//     }
+//   }, [filteredSubject]);
+
+//   const studentsBySub = useSelector(
+//     (state) => state.getStuBySubjectReducer.studentsBySub
+//   );
+
+//   // This function is called when the user clicks the "Export to Excel" button
+//   const handleExport = () => {
+//     // Map over the studentsBySub array to create an array of objects
+//     // where each object represents a row in the Excel file
+//     const data = studentsBySub.map((student) => {
+//       // Find the marks for the current subject in the student's markList array
+//       const marks = student.markList.find(
+//         (mark) => mark.subject == props.match.params.id
+//       );
+
+//       return {
+//         Name: student.name,
+//         Index_No: student.Roll_No,
+//         Addmision_year: student.addmision_year,
+//         Marks: marks ? marks.smark : 'N/A', // add marks data here
+//       };
+//     });
+
+//     // Create a new worksheet and add the data to it
+//     const ws = XLSX.utils.json_to_sheet(data);
+
+//     // Create a new workbook and add the worksheet to it
+//     const wb = XLSX.utils.book_new();
+//     XLSX.utils.book_append_sheet(wb, ws, 'Students');
+
+//     // Write the workbook to a file and trigger a download
+//     XLSX.writeFile(wb, 'students.xlsx');
+//   };
+
+//   const handleFileUpload = (event) => {
+//     const file = event.target.files[0];
+
+//     if (!file) {
+//       return;
+//     }
+
+//     // Upload the file to Cloudinary
+//     const data = new FormData();
+//     data.append('file', file);
+//     data.append('upload_preset', 'voting');
+//     data.append('cloud_name', 'dj76d2css');
+//     fetch('https://api.cloudinary.com/v1_1/dj76d2css/raw/upload', {
+//       method: 'post',
+//       body: data,
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         // Store the URL of the uploaded file in filteredSubject.excel_marks
+//         console.log(data);
+//         console.log(filteredSubject[0].excel_marks);
+//         console.log(data.url);
+//         filteredSubject[0].excel_marks = data.url;
+//         console.log(filteredSubject[0].excel_marks);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+
+//     // Read the file using a FileReader
+//     const reader = new FileReader();
+//     reader.onload = (e) => {
+//       // Parse the data in the file as an array buffer
+//       const data = new Uint8Array(e.target.result);
+//       const workbook = XLSX.read(data, { type: 'array' });
+
+//       // Get the first worksheet in the workbook
+//       const sheetName = workbook.SheetNames[0];
+//       const worksheet = workbook.Sheets[sheetName];
+
+//       // Convert the worksheet data to an array of objects
+//       const newData = XLSX.utils.sheet_to_json(worksheet);
+
+//       // Update the uploadedData state with the new data
+//       setUploadedData(newData);
+//     };
+//     reader.readAsArrayBuffer(file);
+//   };
+
+//   if (error) {
+//     return <div>Error: {error}</div>;
+//   }
+
+//   if (!Array.isArray(studentsBySub)) {
+//     return <div>studentsBySub is not an array</div>;
+//   }
+
+//   if (studentsBySub.length === 0) {
+//     return <div>studentsBySub is an empty array</div>;
+//   }
+
+//   return (
+//     <div>
+//       <h2>Students enrolled in module {props.match.params.id}</h2>
+//       {/* When this button is clicked, the handleExport function is called */}
+//       <button onClick={handleExport}>Export to Excel</button>
+//       <h3>Upload new updated Excel sheet</h3>
+//       {/* When a file is selected, the handleFileUpload function is called */}
+//       <input type="file" onChange={handleFileUpload} />
+//       <table
+//         className="table table-bordered table-responsive-sm"
+//         style={{ width: '80%', margin: 'auto' }}
+//       >
+//         <thead style={{ fontSize: '22px' }}>
+//           <tr>
+//             <th>Name</th>
+//             <th>Index_No</th>
+//             <th>Addmision year</th>
+//             <th>Marks</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {(excelData || studentsBySub).map((student) => (
+//             <tr key={student._id}>
+//               <td>{student.Name}</td>
+//               <td>{student.Index_No}</td>
+//               <td>{student.Addmision_year}</td>
+//               <td>{student.Marks}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
+
+// export default SubjectData;
 
 
 

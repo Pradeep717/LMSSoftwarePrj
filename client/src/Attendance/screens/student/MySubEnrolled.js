@@ -115,6 +115,10 @@ import Titleheading from '../../components/Titleheading';
 const MySubjects = () => {
   const [selectedSemester, setSelectedSemester] = useState(null);
   const { currentUser } = useSelector((state) => state.userProfileReducer);
+  console.log("Mysub ")
+  console.log(currentUser)
+  console.log("Mysub ")
+
 
   // Access the subjects array from the current user
   const subjects = currentUser && currentUser[0].subjects;
