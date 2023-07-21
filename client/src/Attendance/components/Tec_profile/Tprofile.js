@@ -15,6 +15,8 @@ const Tprofile = ({user}) => {
     console.log("B")
     console.log(user)
     console.log("A")
+    console.log(currentUser.user);
+
     
     useEffect(() => {
         if (url) {
@@ -33,6 +35,8 @@ const Tprofile = ({user}) => {
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log("Url in uplaodpic")
+            console.log(data.url)
             setUrl(data.url);
           })
           .catch((err) => {
@@ -57,7 +61,7 @@ const Tprofile = ({user}) => {
             {user && <>
                 <div >
                     <div style={{margin:"auto"}}>
-                    <img src={currentUser.user.pic} alt="mahen"  style={{height:"200px",width:"200px",borderRadius:"100px",margin:"auto",marginBottom:"10px"}} />
+                    <img src={currentUser.user.pic} alt="photo"  style={{height:"200px",width:"200px",borderRadius:"100px",margin:"auto",marginBottom:"10px"}} />
                     </div>
                    
                     <Link to={`/teacher/dashboard/edit/${currentUser.user._id}`} className='edit_profile'>    <i className="far fa-edit fa-2x"></i> </Link>

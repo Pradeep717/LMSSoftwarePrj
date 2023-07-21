@@ -191,17 +191,7 @@ const TeacherSignUp  = ()=>{
             Female
           </label>
         </div>
-        <div className="radio" style={{ marginLeft:"15px" }}>
-          <label>
-            <input
-              type="radio"
-              value="Other"
-              checked={selectedOption === "Other"}
-              onChange={(e)=> setSelectedOption(e.target.value)}
-            />
-            Other
-          </label>
-        </div>
+        
            </div>
         </div>
         </div>

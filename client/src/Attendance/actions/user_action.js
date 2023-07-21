@@ -181,7 +181,9 @@ export const UpdateTProfile = (pic)=> async dispatch =>{
       };
 
 
+    console.log("pic")
     console.log(pic)
+    console.log("pic")
     try {
         //  await axios.post('/api/users/removeStudent',{postId});
         // const response2 = await axios.get(`/api/users/allStudent`);
