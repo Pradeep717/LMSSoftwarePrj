@@ -185,7 +185,7 @@ const SubjectData = (props) => {
       <h2>Students enrolled in module {props.match.params.id}</h2>
       {/* When this button is clicked, the handleExport function is called */}
       <button onClick={handleExport}>Export to Excel</button>
-      <h3>Upload new updated Excel sheet</h3>
+      <h3 style={{color: 'black'}}>Upload new updated Excel sheet</h3>
       {/* When a file is selected, the handleFileUpload function is called */}
       <input type="file" onChange={handleFileUpload} />
       <table

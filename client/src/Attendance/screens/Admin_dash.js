@@ -71,9 +71,9 @@ const Home = () => {
 
     function menuBtnChange() {
       if (sidebar.classList.contains("open")) {
-        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        closeBtn.classList.replace("fa-bars", "fa-times");
       } else {
-        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        closeBtn.classList.replace("fa-times", "fa-bars");
       }
     }
   };
@@ -83,7 +83,7 @@ const Home = () => {
       <div>
         <div className="sidebar">
         <div class="logo_details">
-          <i class="bx bx-menu" id="btn"></i>
+        <i class="fa fa-bars" id="btn"></i>
         </div>
           <ul className="nav-list" style={{ paddingLeft: "0px" }}>
 
