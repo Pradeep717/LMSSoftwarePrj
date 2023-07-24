@@ -57,18 +57,18 @@ export const getStuBySubject = (sub_code)=> async dispatch =>{
 }
 
 // new for update sub url
-export const updateSubject = (sub_code, excel_marks) => async (dispatch) => {
+export const updateSubject = (sub_code, excelSheet_marksUrl) => async (dispatch) => {
     console.log('sub update url Action called');
     console.log(sub_code);
-    console.log(excel_marks);
+    console.log(excelSheet_marksUrl);
     dispatch({
       type: 'UPDATE_SUBJECT_REQUEST',
     });
   
     try {
-      const response = await axios.post(`${BASE_URL}/updateSubUrl`, { sub_code, excel_marks });
+      const response = await axios.post(`${BASE_URL}/updateSubUrl`, { sub_code, excelSheet_marksUrl });
       console.log('getStuBySubject response is');
-      console.log(response.data);
+      console.log(`Response is ${response.data}`);
       dispatch({
         type: 'UPDATE_SUBJECT_SUCCESS',
         payload: response.data,
@@ -88,7 +88,10 @@ export const updateStudentMarks = (studentId, subject, marks) => async (dispatch
     });
   
     try {
-      const response = await axios.post('/updateStudentMarksUrl', { studentId, subject, marks });
+      console.log(`${studentId} , ${subject} , ${marks}`)
+      const response = await axios.post(`${BASE_URL}/updateStudentMarksUrl`, { studentId, subject, marks });
+      console.log(response);
+      
       dispatch({
         type: 'UPDATE_STUDENT_MARKS_SUCCESS',
         payload: response.data,

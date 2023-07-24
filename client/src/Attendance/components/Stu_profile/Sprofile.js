@@ -189,8 +189,8 @@ const Sprofile = () => {
                   <input
                     type="file"
                     onChange={(e) => setImage(e.target.files[0])}
-                    style={{ marginTop: '10px' }}
-                  />
+                    style={{ marginTop: '10px', display: 'flex'}}
+                    />
                 </div>
               </div>
               <button className="uploadbtn" onClick={() => PostData()}>

@@ -27,7 +27,7 @@ const subjectSchema = new Schema({
     sub_sem:{
         type : Number,
     },
-    excel_marks:{
+    excelSheet_marksUrl:{
         type:String,
         // default:"https://res.cloudinary.com/dj76d2css/image/upload/v1687283881/profile2_fkomhx.png"
        }

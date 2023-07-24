@@ -1,0 +1,52 @@
+/* Tprofile.css */
+
+.maincard {
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .inneritems {
+    margin: auto;
+    text-align: center;
+  }
+  
+  .profilepic {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .editicon {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #1976d2;
+  }
+  
+  .file-upload-section {
+    margin-top: 10px;
+  }
+  
+  .file-upload-section input[type='file'] {
+    display: none;
+  }
+  
+  .file-upload-section label {
+    cursor: pointer;
+  }
+  
+  .details {
+    margin-top: 30px;
+    text-align: left;
+  }
+  
+  .details .MuiFormControl-root {
+    margin-bottom: 15px;
+  }
+  

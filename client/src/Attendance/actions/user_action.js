@@ -85,7 +85,7 @@ export const loginUser = (user,type) => async dispatch => {
         } 
         if(type == "Student") {
             // window.location.href = "/student/dashboard/enrollsubject";
-            window.location.href = "/student/dashboard";
+            window.location.href = "/student/dashboard/enrollsubject";
         }
         if(type == "Admin"){
             localStorage.setItem("admin", type);

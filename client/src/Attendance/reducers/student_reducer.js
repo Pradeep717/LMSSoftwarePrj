@@ -17,12 +17,33 @@ export const getStuByClassReducer = (state={students:[]},action)=>{
 
 //new update sub url
 //
+export const updateStudentMarksReducer = (state={students:[]},action)=>{
+   
+    switch(action.type){
+        case 'UPDATE_STUDENT_MARKS_REQUEST':
+            console.log("Reducer request")
+            return {...state,loading:true}
+        case 'UPDATE_STUDENT_MARKS_SUCCESS':
+            console.log("Reducer success")
+
+            return {
+                updateStudentWithMarks:action.payload,loading:false
+            }    
+        case 'UPDATE_STUDENT_MARKS_FAILED':
+            return {error:action.payload,loading:false}
+        default:
+            return state         
+    }
+}
 export const updateSubjectReducer = (state={students:[]},action)=>{
    
     switch(action.type){
         case 'UPDATE_SUBJECT_REQUEST':
+            console.log("Reducer request")
             return {...state,loading:true}
         case 'UPDATE_SUBJECT_SUCCESS':
+            console.log("Reducer success")
+
             return {
                 updateSubject:action.payload,loading:false
             }    

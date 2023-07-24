@@ -76,25 +76,36 @@ const transporter = nodemailer.createTransport(
   router.post('/updateStudentMarksUrl', (req, res) => {
     const { studentId, subject, marks } = req.body;
   
+  
     // Find the student by studentId
-    Student.findOne({ _id: studentId })
+    Student.findOne({ Roll_No: studentId })
       .then((student) => {
+        // Log the value of student
+        console.log('student:', student.markList);
+  
         if (student) {
           // Find the mark for the current subject in the student's markList array
-          const mark = student.markList.find((mark) => mark.subject == subject);
+          const mark = student.markList.find((mark) => mark.subject === subject);
+  
+          // Log the value of mark before the update
+          console.log('mark (before update):', mark);
   
           if (mark) {
             // Update the mark's smark field
             mark.smark = marks;
           } else {
-            // Add a new mark to the student's markList array
-            student.markList.push({ subject, smark: marks });
+            // Add a new mark to the student's markList array with subject as a string
+            student.markList.push({ subject: subject.toString(), smark: marks });
           }
   
-          // Save the updated student
-          student
-            .save()
+          // Update the student document using findOneAndUpdate
+          Student.findOneAndUpdate(
+            { Roll_No: studentId },
+            { markList: student.markList },
+            { new: true, useFindAndModify: false } // new: true returns the updated document, useFindAndModify: false to avoid deprecation warning
+          )
             .then((updatedStudent) => {
+              console.log('Updated student:', updatedStudent);
               res.json(updatedStudent);
             })
             .catch((err) => {
@@ -111,7 +122,36 @@ const transporter = nodemailer.createTransport(
       });
   });
   
+  
   ///
+  
+// router.post('/updateSubUrl', (req, res) => {
+//   const { sub_code, excelSheet_marksUrl } = req.body;
+//   console.log("Post ")
+//  console.log("In post request")
+//   // find the subject by subjectId
+//   Subject.findOne({ sub_code: sub_code })
+//       .then(subject => {
+//           if (subject) {
+//               // update the subject's excelSheet_marksUrl
+//               subject.excelSheet_marksUrl = excelSheet_marksUrl;
+//               subject.save()
+//                   .then(updatedSubject => {
+//                       res.json(updatedSubject);
+//                   })
+//                   .catch(err => {
+//                       console.log(err);
+//                       res.status(500).json({ error: 'An error occurred while updating the subject' });
+//                   });
+//           } else {
+//               res.status(404).json({ error: 'Subject not found' });
+//           }
+//       })
+//       .catch(err => {
+//           console.log(err);
+//           res.status(500).json({ error: 'An error occurred while finding the subject' });
+//       });
+// });
 
 
   

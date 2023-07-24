@@ -1,13 +1,152 @@
+
 .footer{
     margin: auto;
-    background-color: #0c8c8c;
-    color: aliceblue;
-    height: 100px;
+    padding: 35px 90px 20px 90px;
     width: 100%;
-    justify-content: center;
-    display: flex;
     position: sticky;
+    text-align: center;
+    background-color: #0c8c8c;
+    height: auto;
+    min-height: 200px;
+}
+
+.darkmod{
+    background-color: #333;
+}
+.ft-main{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content:space-between;
+    margin: auto;
+    width: 100%;
+}
+.columns{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content:baseline;
+    
+}
+.columns h6{
+    color:rgb(255, 255, 255);
+    text-align:center;
+    margin-bottom: 18px;
+}
+.darkmod .columns h6{
+    color:#f1f0f0;
+}
+
+.columns p{
+    color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.columns ul{
+    list-style-type: none;
+
+}
+.columns ul li a{
+    text-decoration: none;
+}
+
+.darkmod .columns ul li a p:hover{
+    color: bisque;
+}
+.columns ul li a p:hover{
+    color: #21f0f0;
+    text-decoration: underline;
+    transition: 0.5s ease;
+}
+.columns ul li a p{
+    margin-top: 5px;
+}
+hr{
+    color: white;
+    height: 5px;
+}
+.copyrights{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px;
+    width: 100%;
+}
+.copyrights p{
+    text-align: left;
+    color: white;
+    font-size: 11px;
+}
+.address{
     align-items: center;
-    padding: 25px 0;
+    text-align: center;
+    padding: 0px;
+}
+.address p{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2px ;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    gap: 35px;
+    justify-content: space-between;
+}
+.custom-icon1{
+    font-size: 34px;
+    color: #ffffff;
+}
+.custom-icon1:hover{
+    color: #354bf8;
+    transition: 0.25s ease;
+    font-size: 36px;
+}
+.custom-icon2{
+    font-size: 34px;
+    color: #ffffff;
+}
+.custom-icon2:hover{
+    color: #1f7bcc;
+    transition: 0.25s ease;
+    font-size: 36px;
+}
+.custom-icon3{
+    font-size: 34px;
+    color: #ffffff;
+}
+.custom-icon3:hover{
+    color: #da1c1c;
+    transition: 0.25s ease;
+    font-size: 36px;
+}
+@media only screen and (max-width: 1070px){
+    .ft-main{
+        flex-direction: column;
+    }
+    .icons{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+}
+
+@media only screen and (max-width: 900px){
+    .copyrights{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: auto;
+    }
+    .copyrights p{
+        text-align: center;
+    }
+
     
 }

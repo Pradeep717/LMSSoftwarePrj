@@ -98,33 +98,6 @@ router.get('/allSub',(req,res)=>{
     })
 })
 
-router.post('/updateSubUrl', (req, res) => {
-    const { sub_code, excel_marks } = req.body;
-    console.log(excel_marks)
-    console.log(sub_code)
-    // find the subject by subjectId
-    Subject.findOne({ sub_code: sub_code })
-        .then(subject => {
-            if (subject) {
-                // update the subject's excel_marks
-                subject.excel_marks = excel_marks;
-                subject.save()
-                    .then(updatedSubject => {
-                        res.json(updatedSubject);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        res.status(500).json({ error: 'An error occurred while updating the subject' });
-                    });
-            } else {
-                res.status(404).json({ error: 'Subject not found' });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ error: 'An error occurred while finding the subject' });
-        });
-});
 
 
 router.get('/allreport',(req,res)=>{
