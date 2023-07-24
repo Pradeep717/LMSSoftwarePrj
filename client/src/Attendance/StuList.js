@@ -103,7 +103,7 @@ const StuList = ({ students, sClass, mark }) => {
             {/* <th>Roll_No</th> */}
             <th>Index_No</th>
             <th>Addmision year</th>
-            <th>Attendance</th>
+            <th>Marks</th>
           </tr>
         </thead>
 
@@ -121,6 +121,7 @@ const StuList = ({ students, sClass, mark }) => {
                     <button
                       className="btn btn-primaty mark_button"
                       onClick={() => handleShow(item)}
+                      style={{ color: "black" }}
                     >
                       Upload Mark
                     </button>
