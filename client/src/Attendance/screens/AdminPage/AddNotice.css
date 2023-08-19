@@ -1,0 +1,68 @@
+@keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .success-message {
+    animation: slideIn 0.5s ease-in-out;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  .noticeMain{
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    width: 900px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 180px;
+    border-radius: 5px;
+    color: black;
+    
+}
+.upperRow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.upperRow p{
+    font-size: 14px;
+}
+.titlenew{
+    color: black;
+}
+.batch{
+    width: 150px;
+    text-align: center;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 14px;
+    /* background-color: ; */
+}
+.batchselect{
+    display: flex;
+    flex-direction: row;
+}
+.batch option{
+    height: 30px;
+    border-radius: 0px;
+
+}
+
+.opt:hover{
+    background-color: #0c8c8c;
+}
+.dark-mode{
+    color: white;
+    background-color: #333;
+}

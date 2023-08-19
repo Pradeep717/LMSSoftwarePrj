@@ -3,13 +3,47 @@
     margin: auto;
     background-color: white;
     border-radius: 5px;
+    color: black;
     min-height: 100vh;
-    padding: 10px;
+    padding: 10px 40px 20px 40px;
     margin-top: 40px;
     overflow: hidden;
     margin-bottom: 50px;
 }
+.dark-x{
+    color: white;
+    border: none;
+}
+/* Add these styles to your Allstudent.css file */
+.filter-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-options select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    margin: auto;
+  }
+  
+  .filter-options select:hover {
+    border-color: #666;
+  }
+  
+  .filter-options select:focus {
+    outline: none;
+    border-color: #555;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  }
 
+  
 .btnrow{
     text-align: center;
     justify-content: center;
@@ -49,4 +83,15 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-align: center;
+}
+
+.dark-mode{
+    color: white;
+    background-color: #333;
+}
+.batches{
+    text-align: center;
+}
+.batch-counts{
+    color: black;
 }

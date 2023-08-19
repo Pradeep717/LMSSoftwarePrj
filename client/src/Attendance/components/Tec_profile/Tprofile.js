@@ -1,51 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { UpdateTProfile } from "../../actions/user_action";
+import React, { useEffect, useState, useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { UpdateTProfile } from '../../actions/user_action';
+import './Tprofile.css';
+import { DarkModeContext } from '../../../App';
 
 const Tprofile = ({ user }) => {
-  console.log(user);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
   const [url, setUrl] = useState(undefined);
-
+  const { isDarkMode } = useContext(DarkModeContext);
   const dispatch = useDispatch();
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  // console.log("B")
-  // console.log(user)
-  // console.log("A")
-  console.log("Current User:");
-  console.log(currentUser.user);
-  console.log("Pic URL from user[0]:");
-  if (user && user.length > 0 && user[0]) {
-    console.log("Pic URL from user[0]:");
-    console.log(user[0].pic);
-  } else {
-    console.log("User is undefined or empty");
-  }
-  console.log(currentUser.user[0]?.pic);
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   useEffect(() => {
     if (url) {
       uploadFields();
     }
-  }, [url]);
+  }, [url]); // Add url as a dependency for the useEffect
 
   const uploadPic = () => {
     const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "voting");
-    data.append("cloud_name", "dj76d2css");
-    fetch("https://api.cloudinary.com/v1_1/dj76d2css/image/upload", {
-      method: "post",
+    data.append('file', image);
+    data.append('upload_preset', 'voting');
+    data.append('cloud_name', 'dj76d2css');
+    fetch('https://api.cloudinary.com/v1_1/dj76d2css/image/upload', {
+      method: 'post',
       body: data,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Url in uplaodpic");
-        console.log(`url ${data.url}`);
+    }) 
+      .then(res => res.json())
+      .then(data => {
         setUrl(data.url);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -63,128 +49,45 @@ const Tprofile = ({ user }) => {
   };
 
   return (
-    <div
-      className="card"
-      style={{
-        width: "60%",
-        margin: "auto",
-        marginTop: "40px",
-        overflow: "hidden",
-        padding: "10px",
-      }}
-    >
+    <div className={`divmain ${isDarkMode ? 'd-mode' : ''}`}>
       {user && (
         <>
-          <div>
-            <div style={{ margin: "auto" }}>
-              <div style={{ textAlign: "center" }}>
-                {user && user.length > 0 && user[0] && (
-                  <img
-                    src={user[0].pic}
-                    alt="photo"
-                    style={{
-                      height: "200px",
-                      width: "200px",
-                      borderRadius: "100px",
-                      margin: "auto",
-                      marginBottom: "10px",
-                    }}
-                  />
-                )}
-              </div>
+        <div className="profile-container">
+          <div className="profile-image">
+            {user[0] && (
+            <img src={user[0].pic} alt="profile" />
+            )}
+          </div>
+
+          <Link to={`/teacher/dashboard/edit/${currentUser.user._id}`} className="edit-profile-btn">
+            Edit Profile
+          </Link>
+
+          <div className="upload-container">
+            <input type="file" onChange={e => setImage(e.target.files[0])} />
+            <button className="upload-btn" onClick={() => PostData()}>
+              Upload Image
+            </button>
+          </div>
+
+          <div className="profile-details">
+            <div className="left-details">
+              <p><b>Full Name:</b> {currentUser.user.name} {currentUser.user.surname}</p>
+              <p><b>Teaching Area:</b> {currentUser.user.teaching_area}</p>
+              <p><b>Date Of Birth:</b> {currentUser.user.date_of_birth}</p>
+              <p><b>Email:</b> {currentUser.user.email}</p>
+              <p><b>Gender:</b> {currentUser.user.gender}</p>
+              <p><b>Qualification:</b> {currentUser.user.qulification}</p>
             </div>
-
-            <Link
-              to={`/teacher/dashboard/edit/${currentUser.user._id}`}
-              className="edit_profile"
-            >
-              {" "}
-              <i className="far fa-edit fa-2x"></i>{" "}
-            </Link>
-
-            <div
-              style={{
-                display: "flex",
-                marginBottom: "50px",
-                marginLeft: "60px",
-              }}
-            >
-              <div className="file-field input-field">
-                <div
-                  className="btn #64b5f6 input-field2"
-                  style={{ marginLeft: "20px" }}
-                >
-                  <input
-                    type="file"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    style={{ marginTop: "10px", display: "flex" }}
-                  />
-                </div>
-              </div>
-
-              <button
-                className="btn btn-success ml-2  btn_regis "
-                onClick={() => PostData()}
-              >
-                Upload Image
-              </button>
-            </div>
-
-            <div style={{ display: "flex" }}>
-              <div style={{ width: "5%" }}></div>
-              <div style={{ width: "50%" }}>
-                <p>
-                  <b>FullName:</b>
-                  {currentUser.user.name}
-                  {currentUser.user.surname}
-                </p>
-
-                <p>
-                  <b>Teaching Area:</b>
-                  {currentUser.user.teaching_area}
-                </p>
-                <p>
-                  <b>Date Of Birth:{currentUser.user.date_of_birth}</b>
-                  {}
-                </p>
-                <p>
-                  <b>Email:</b>
-                  {currentUser.user.email}
-                </p>
-                <p>
-                  <b>Gender:</b>
-                  {currentUser.user.gender}
-                </p>
-                <p>
-                  <b>Qualification:</b>
-                  {currentUser.user.qulification}
-                </p>
-              </div>
-              <div style={{ width: "10%" }}></div>
-              <div>
-                <p>
-                  <b>Employee Id :</b> {currentUser.user.empolyee_id}
-                </p>
-
-                <p>
-                  <b>Joining Year:</b>
-                  {currentUser.user.joining_year}
-                </p>
-                <p>
-                  <b>Age:</b>
-                  {currentUser.user.age}
-                </p>
-                <p>
-                  <b>Mobile No.</b>
-                  {currentUser.user.mobile}
-                </p>
-                <p>
-                  <b>Address:</b>
-                  {currentUser.user.address}
-                </p>
-              </div>
+            <div className="right-details">
+              <p><b>Employee Id:</b> {currentUser.user.empolyee_id}</p>
+              <p><b>Joining Year:</b> {currentUser.user.joining_year}</p>
+              <p><b>Age:</b> {currentUser.user.age}</p>
+              <p><b>Mobile No.:</b> {currentUser.user.mobile}</p>
+              <p><b>Address:</b> {currentUser.user.address}</p>
             </div>
           </div>
+        </div>
         </>
       )}
     </div>

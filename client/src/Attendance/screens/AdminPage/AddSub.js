@@ -1,13 +1,15 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import useWindowDimensions from '../../components/UseWindowDimensions';
 import {addSubjectAction} from "../../actions/admin_action"
 import Titleheading from "../../components/Titleheading"
 import {CName,Credit_Data} from "../../Utills"
+import { DarkModeContext } from '../../../App';
 
 const AddSubject = () => {
 
     const dispatch = useDispatch();
+    const { isDarkMode } = useContext(DarkModeContext);
 
     const { height, width } = useWindowDimensions();
    
@@ -39,8 +41,8 @@ const AddSubject = () => {
     }
 
     return (
-      <div className="col-7" style={{ margin: "auto",marginBottom:"200px" }}>
-        <div className="card px-5 py-2" style={{ margin: "5%" }}>
+      <div className={`studentreg ${isDarkMode ? "dark-mode" : ""}`}>
+        <div className="">
           <Titleheading title="Add New Subject" />
 
           <div className="row">

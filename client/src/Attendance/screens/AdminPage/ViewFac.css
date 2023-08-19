@@ -1,0 +1,94 @@
+.d-mode{
+    background-color: #333;
+    color: white;
+}
+.delbtn{
+    background-color: #0c8c8c;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 80px;
+    height: 40px;
+    border: none;
+
+}
+.delbtn:hover{
+    background-color: #0f8282;
+}
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Styling for the filter controls */
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Styling for the filter controls */
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Styling for the filter controls */
+.filter-controls {
+    display: flex;
+    justify-content: center; /* Center the controls horizontally */
+    gap: 20px; /* Gap between the controls */
+    margin-bottom: 20px;
+  }
+  
+  .filter-controls label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333; /* Text color */
+  }
+  
+  .filter-controls select {
+    padding: 10px;
+    border: 2px solid #007bff; /* Border color */
+    border-radius: 6px;
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+    cursor: pointer;
+    font-size: 16px; /* Larger font size */
+    transition: border-color 0.3s; /* Add a smooth transition */
+  }
+  
+  /* Styling when an option is selected */
+  .filter-controls select:focus {
+    outline: none;
+    border-color: #0056b3; /* Highlight color when selected */
+  }
+  
+  /* Styling for select options */
+  .filter-controls select option {
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+    font-size: 16px; /* Larger font size */
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition */
+  }
+  
+  /* Styling when hovering over select options */
+  .filter-controls select option:hover {
+    background-color: #0c8c8c; /* Hover background color */
+    color: #fff; /* Hover text color */
+  }
+  
+  /* Dark mode styles */
+  .d-mode .filter-controls label,
+  .d-mode .filter-controls select {
+    color: #fff; /* Text color in dark mode */
+    background-color: #333; /* Background color in dark mode */
+    border-color: #555; /* Border color in dark mode */
+  }
+  
+  .d-mode .filter-controls select:focus {
+    border-color: #007bff; /* Highlight color in dark mode */
+  }
+  
+  .d-mode .filter-controls select option {
+    background-color: #333; /* Background color in dark mode */
+    color: #fff; /* Text color in dark mode */
+  }
+  
+  .d-mode .filter-controls select option:hover {
+    background-color: #0c8c8c; /* Hover background color in dark mode */
+    color: #fff; /* Hover text color in dark mode */
+  }
+  
+  
+  

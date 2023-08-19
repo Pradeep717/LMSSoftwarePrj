@@ -47,12 +47,10 @@ export const loginUser = (user,type) => async dispatch => {
     dispatch({
         type: 'USER_LOGIN_REQUEST'
     })
-    console.log('Sign in user');
-    console.log(user);
-    console.log('Sign in user');
    
+
     try {
-        var  res
+        var  res;
         if(type == "Student" || type == "Admin") {
              if(type == "Student" && user.email == 'admin@gmail.com'){
                 return ;
@@ -76,7 +74,9 @@ export const loginUser = (user,type) => async dispatch => {
             type: 'USER_LOGIN_SUCCESS',
             payload: res.data
         })
+        console.log("Payload");
         console.log(res.data)
+       
         localStorage.setItem("jwt", res.data.token);
         localStorage.setItem('currentUser', JSON.stringify(res.data));
         console.log(   type == "Teacher")

@@ -7,36 +7,49 @@ import backg from "../Images/backg.jpg"
 import StudentIMage from "../Images/StuImg.png"
 import AdminIMage from "../Images/admin2.jpg"
 import TeacherImage from "../Images/teach.png"
+import { DotLoader, HashLoader } from 'react-spinners';
+import LoadingOverlay from './LoadingOverlay'; // Import the LoadingOverlay component
 import './Signin.css'
+
 const SignIn  = ()=>{
     const history = useHistory()
-    
+    const [loading,setLoading] = useState(false);
     const [password,setPasword] = useState("")
     const [email,setEmail] = useState("")
     const [userItem,setuserItem]=useState("")
  
     const dispatch = useDispatch()
+    
    
     const handleRequest = ()=>{
+      setLoading(true);
         const user = {
             password,email
             
         }
-        if(history.location.pathname == "/stulogin"){
+        console.log(user);
+        console.log("Histry");
+
+        if(history.location.pathname == "/stulogin" || email.substring(0, 2).toLowerCase() === "eg"){
           dispatch(loginUser(user,"Student"))
         }
-        if(history.location.pathname == "/teclogin"){
+        if(history.location.pathname == "/teclogin" || email.substring(0, 3).toLowerCase() === "eng"){
           const datat = {
             password,empolyee_id:email
             
         }
           dispatch(loginUser(datat,"Teacher"))
         } 
-        if(history.location.pathname == "/adminlogin"){
+        if(history.location.pathname == "/adminlogin" || email.substring(0, 5).toLowerCase() === "admin"){
           dispatch(loginUser(user,"Admin"))
         }
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
        
-    }
+    };
+
     
    return (
       <div>
@@ -89,23 +102,12 @@ const SignIn  = ()=>{
             </div>
               </div>
           <br />
-          
-          {/* <div className="col">
-            
-            <select  className="form-select" value={userItem}onChange={(e)=> setuserItem(e.target.value)}
-              style={{height:"50px",width:"80%",marginLeft:"10%"}}
-            >
-            {userType.map((item) => (
-                  <option value={item} key={item} >
-                    {" "}
-                    {item}{" "}
-                  </option>
-                ))}
-            </select>
-        </div> */}
-       
-
-           <button className='btn' onClick={() => handleRequest()}>Signin</button>
+           <button className='btn' onClick={() => handleRequest()} >Signin</button>
+           {loading && (
+            <div className="loading-overlay">
+              <HashLoader color="#36d7b7" loading={loading} size={40} />
+            </div>
+          )}
       </div>
       </div>
       </div>

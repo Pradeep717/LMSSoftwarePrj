@@ -1,9 +1,10 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { useDispatch } from 'react-redux'
 import {Link,useHistory} from 'react-router-dom'
 import {registerTeacher} from '../../actions/user_action'
 import Titleheading from "../../components/Titleheading"
 import {Tarea,QuaF} from "../../Utills"
+import { DarkModeContext } from '../../../App'
 
 const TeacherSignUp  = ()=>{
     const history = useHistory()
@@ -21,6 +22,7 @@ const TeacherSignUp  = ()=>{
     const [mobile,setMobile] = useState("")
     const[address,setAddress]=useState("")
     const[selectedOption,setSelectedOption] = useState("")
+    const { isDarkMode } = useContext(DarkModeContext);
  
     const dispatch = useDispatch()
    
@@ -37,8 +39,8 @@ const TeacherSignUp  = ()=>{
     }
 
    return (
-      <div className='col-9' style={{margin:'auto'}}>
-          <div className="card px-5 py-2" style={{margin:"5%"}}>
+      <div className={`studentreg ${isDarkMode ? "dark-mode" : ""}`}>
+          <div className="">
              <Titleheading  title="Teacher Registration"/>
           <div className="row">
             <div className="col">
@@ -119,7 +121,7 @@ const TeacherSignUp  = ()=>{
                 
             <input
             className='form-control stregis_incls'
-            type="number"
+            type="string"
             placeholder="Staff Id"
             value={Roll_No}
             onChange={(e)=>setRoll_No(e.target.value)}
@@ -191,7 +193,17 @@ const TeacherSignUp  = ()=>{
             Female
           </label>
         </div>
-        
+        <div className="radio" style={{ marginLeft:"15px" }}>
+          <label>
+            <input
+              type="radio"
+              value="Other"
+              checked={selectedOption === "Other"}
+              onChange={(e)=> setSelectedOption(e.target.value)}
+            />
+            Other
+          </label>
+        </div>
            </div>
         </div>
         </div>

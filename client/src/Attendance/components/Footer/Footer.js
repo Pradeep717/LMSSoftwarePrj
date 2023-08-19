@@ -1,13 +1,11 @@
-
 import React from "react";
 import { useContext } from "react";
 import "./Footer.css";
-// import { DarkModeContext } from '../../../App';
+import { DarkModeContext } from '../../../App';
 
 const Footer = () => {
 
-  // const { isDarkMode } = useContext(DarkModeContext);
-  const { isDarkMode, setIsDarkMode } = false;
+  const { isDarkMode } = useContext(DarkModeContext);
 
   return (
     <div className={`footer ${isDarkMode ? 'darkmod' : ''}`}>

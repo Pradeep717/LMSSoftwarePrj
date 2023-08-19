@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root{
-    --color-default:#004f83;
-    --color-second:#0067ac;
+/* :root{
+    --color-default:white;;
+    --color-second:white;;
     --color-white:#fff;
     --color-body:#e4e9f7;
     --color-light:#e0e0e0;
-  }
+  } */
 
 *{
     padding: 0%;
@@ -18,12 +18,15 @@
 body{
     min-height: 100vh;
 }
-
+.homecls{
+  display: none;
+}
 .sidebar{
   min-height: 92vh;
   width: 48px;
-  background-color: #0c8c8c;
+  /* background-color: #0c8c8c; */
   /* padding: 6px 14px; */
+  
   padding: 5px;
   z-index: 99;
   border-radius: 0px 5px 5px 0px;
@@ -36,6 +39,7 @@ body{
 
 .sidebar.open{
     width: 170px;
+
   }
   
   .sidebar .logo_details{
@@ -43,6 +47,8 @@ body{
     display: flex;
     align-items: center;
     position: relative;
+    color: white;
+    transition: 0.5s ease;
   }
   
   .sidebar .logo_details .icon{
@@ -165,9 +171,8 @@ body{
     display: flex;
     height: 100%;
     width: 100%;
+    color: white;
     align-items: center;
-    text-decoration: none;
-    background-color: #0c8c8c;
     position: relative;
     transition: all .5s ease;
     z-index: 12;
@@ -177,9 +182,9 @@ body{
     content: "";
     position: absolute;
     width: 100%;
+    color: white;
     height: 100%;
     transform: scaleX(0);
-    background-color: #39b8b8;
     border-radius: 5px;
     transition: transform 0.3s ease-in-out;
     transform-origin: left;
@@ -188,6 +193,7 @@ body{
   
   .sidebar li a:hover::after{
     transform: scaleX(1);
+    color: white;
     color:var(--color-default)
   }
   
@@ -216,6 +222,7 @@ body{
   .sidebar li i{
     height: 35px;
     line-height: 35px;
+    color: white;
     font-size: 18px;
     border-radius: 5px;
   }

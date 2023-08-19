@@ -144,7 +144,7 @@ export const makeStuAttendance = (clsName,obj)=> async dispatch =>{
         
         const response = await axios.post(`${BASE_URL}/makeAttdence`,obj,config);
 
-        console.log("response",response);
+        console.log("response of attendaance ",response);
       
          const response1 = await axios.post(`${BASE_URL}/getStuByClass`,clsName);
         console.log(response1);

@@ -8,3 +8,9 @@
     min-height: 90vh;
     margin-bottom: 60px;
 }
+.notices{
+    border: dotted;
+    border-radius: 5px;
+    padding: 20px 20px 20px 20px;
+
+}

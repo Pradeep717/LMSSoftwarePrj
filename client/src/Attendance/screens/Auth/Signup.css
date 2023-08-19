@@ -1,0 +1,95 @@
+.studentreg{
+    padding: 10px 30px 30px 30px;
+    margin-top: 40px;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-bottom: 100px;
+    background-color: white;
+}
+.dark-x{
+    border:dotted white;
+    text-align: center;
+    margin-top: 10px;
+    margin-top: 50px;
+    justify-content:space-between;
+    color: white;
+    
+    border-radius: 5px;
+    padding: 20px;
+    gap: 10px;
+}
+
+.dark-mode{
+    color: white;
+    background-color: #333;
+    
+}
+.regbtn{
+    width: 250px;
+    height: 45px;
+    margin: auto;
+    border-radius: 3px;
+    border: none;
+    padding: 5px all;
+    background-color: #0c8c8c;
+    color: white;
+    font-size: 15px;
+}
+.regbtncls{
+    text-align: center;
+}
+.regbtn:hover{
+    background-color: #085b5b;
+    transition: 0.8s;
+}
+
+.dwnbtn{
+    width: 210px;
+    height: 45px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 3px;
+    border: none;
+    padding: 5px all;
+    background-color: #0a8877;
+    color: white;
+    font-size: 15px;
+}
+
+.uplbtn{
+    width: 210px;
+    height: 45px;
+
+    border-radius: 3px;
+    border: none;
+    padding: 5px all;
+    background-color: #045063;
+    color: white;
+    font-size: 15px;
+
+}
+.twobtns{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-top: 50px;
+    justify-content:space-between;
+    border:dotted black;
+    border-radius: 5px;
+    padding: 20px;
+    gap: 10px;
+}
+.titlesmall{
+    font-size: 20px;
+}
+.dwnbtn:hover{
+    background-color: #096e61;
+    transition: 1s;
+}
+.uplbtn:hover{
+    background-color: #033a48;
+    transition: 1s;
+}
+  

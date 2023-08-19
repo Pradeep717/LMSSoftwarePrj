@@ -6,8 +6,40 @@
   border-bottom: 1px solid rgb(190, 32, 32);
   box-shadow: 0 1px 0 0 #000;
 } */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: black;
+  /* Other common styles for the body */
+}
+
+.light-mode .sidebar {
+  background-color: #0c8c8c;
+}
+.dark-mode .sidebar {
+  background-color: #333;
+  color: #b3b3b3;
+}
+.dark-mode .sidebar {
+  background-color: #333;
+  color: #b3b3b3;
+}
+/* Styles for dark mode */
+.dark-mode .app-container {
+  background-color: #121212;
+  color: black;
+}
+
+/* Styles for light mode */
+.app-container,
+.light-mode .app-container {
+  background-color: #c1e0e0;
+  color: black;
+}
+
 .app{
   min-height: 100vh;
   font-size: 12px;
+  color: black;
 }
-

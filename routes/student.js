@@ -66,7 +66,7 @@ const transporter = nodemailer.createTransport(
       // Send the buffer as the response
       res.send(buffer);
     } catch (error) {
-      console.error(error);
+     // console.error(error);
       res.status(500).json({ error: 'An error occurred while generating the Excel sheet' });
     }
   });
@@ -81,14 +81,14 @@ const transporter = nodemailer.createTransport(
     Student.findOne({ Roll_No: studentId })
       .then((student) => {
         // Log the value of student
-        console.log('student:', student.markList);
+        //console.log('student:', student.markList);
   
         if (student) {
           // Find the mark for the current subject in the student's markList array
           const mark = student.markList.find((mark) => mark.subject === subject);
   
           // Log the value of mark before the update
-          console.log('mark (before update):', mark);
+          //console.log('mark (before update):', mark);
   
           if (mark) {
             // Update the mark's smark field
@@ -105,7 +105,7 @@ const transporter = nodemailer.createTransport(
             { new: true, useFindAndModify: false } // new: true returns the updated document, useFindAndModify: false to avoid deprecation warning
           )
             .then((updatedStudent) => {
-              console.log('Updated student:', updatedStudent);
+             // console.log('Updated student:', updatedStudent);
               res.json(updatedStudent);
             })
             .catch((err) => {
@@ -156,7 +156,7 @@ const transporter = nodemailer.createTransport(
 
   
 router.post('/stuReg',(req,res)=>{
-    console.log(req.body)
+    
    const {name,surname,mother_name,father_name,date_of_birth,age,gender,addmision_year,address,
     email,password,Roll_No,clsName,mobile} = req.body 
 //   console.log(req.body )
@@ -223,12 +223,12 @@ router.post('/StuSign',(req,res)=>{
   if(!email || !password){
      return res.status(410).json({error:"please add email or password"})
   }
-  Student.findOne({email:email})
+  Student.findOne({Roll_No:email})
   .then(savedUser=>{
       if(!savedUser){
          return res.status(411).json({error:"Invalid Email or password"})
       }
-      console.log(savedUser)
+     // console.log(savedUser)
       bcrypt.compare(password,savedUser.password)
       .then(doMatch=>{
           if(doMatch){
@@ -244,16 +244,47 @@ router.post('/StuSign',(req,res)=>{
           }
       })
       .catch(err=>{
+        console.log("login error is");
           console.log(err)
       })
   })
 })
 
-
+// router.post('/StuSign',(req,res)=>{
+//   const {email,password} = req.body
+//   console.log(req.body)
+//   if(!email || !password){
+//      return res.status(410).json({error:"please add email or password"})
+//   }
+//   Student.findOne({email:email})
+//   .then(savedUser=>{
+//       if(!savedUser){
+//          return res.status(411).json({error:"Invalid Email or password"})
+//       }
+//       console.log(savedUser)
+//       bcrypt.compare(password,savedUser.password)
+//       .then(doMatch=>{
+//           if(doMatch){
+           
+//               // res.json({message:"successfully signed in"})
+//              const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
+//              const {_id,name,email,pic,mobile,Roll_No,clsName,isAdmin,surname,father_name,mother_name,addmision_year,address,date_of_birth,age,gender} = savedUser
+             
+//              res.json({token,user:{_id, name,email,pic,mobile,Roll_No,clsName,isAdmin,surname,father_name,mother_name, gender, addmision_year,address,date_of_birth,age}})
+//           }
+//           else{
+//               return res.status(412).json({error:"Invalid Email or password"})
+//           }
+//       })
+//       .catch(err=>{
+//           console.log(err)
+//       })
+//   })
+// })
 
 
 router.post('/getStuByClass',(req,res)=>{
-  console.log(req.body)
+ // console.log(req.body)
     Student.find({clsName:req.body.clsName})
     
   
@@ -267,8 +298,8 @@ router.post('/getStuByClass',(req,res)=>{
 
 //new for get stu by sub
 router.post('/getStuBySub', async (req, res) => {
-  console.log("at post");
-  console.log(req.body.sub_code);
+  // console.log("at post");
+  // console.log(req.body.sub_code);
   try {
     const sub_code = req.body.sub_code;
     const students = await Student.find({ 'subjects.sub_code': sub_code });
@@ -280,7 +311,7 @@ router.post('/getStuBySub', async (req, res) => {
 
 //new subject by batch
 router.post('/getSubByBatch',(req,res)=>{
-  console.log(req.body)
+  //console.log(req.body)
   Subject.find({sub_class:req.body.sub_class})
     
   
@@ -323,16 +354,42 @@ router.get('/getAllStuClass',(req,res)=>{
 router.post('/makeAttdence' ,async(req,res)=>{
     
     const posts = await Student.find({_id:req.body.StudentId})
-    const {timestamp,type,StudentId,dateId} = req.body
+    //const {timestamp,type,StudentId,dateId} = req.body
+    const { timestamp, type, StudentId, dateId, date, startTime, endTime, sub_code } = req.body;
+    // const obj = {
+    //   timestamp,type,StudentId,dateId,
+    //   madeBy:"admin"
+    // }
     const obj = {
-      timestamp,type,StudentId,dateId,
-      madeBy:"admin"
-    }
+      timestamp,
+      type,
+      StudentId,
+      dateId,
+      madeBy: "admin",
+      date,
+      startTime,
+      endTime,
+      sub_code,
+
+    };
     posts[0].attdenList.push(obj);
     posts[0].pList.push(dateId);
     posts[0].save();
     res.json(posts)
 })
+// router.post('/makeAttdence' ,async(req,res)=>{
+    
+//     const posts = await Student.find({_id:req.body.StudentId})
+//     const {timestamp,type,StudentId,dateId} = req.body
+//     const obj = {
+//       timestamp,type,StudentId,dateId,
+//       madeBy:"admin"
+//     }
+//     posts[0].attdenList.push(obj);
+//     posts[0].pList.push(dateId);
+//     posts[0].save();
+//     res.json(posts)
+// })
 
 router.post('/uploadMark' ,async(req,res)=>{
     
@@ -448,7 +505,7 @@ router.post('/enrollSubject', async (req, res) => {
 
     subjects.push(subjectObj);
     await student.save();
-    console.log(student);
+    //console.log(student);
     res.json(student);
   } else {
     console.log("Student not found");

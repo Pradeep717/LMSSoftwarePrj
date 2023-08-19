@@ -20,20 +20,42 @@ router.get('/allnotice',(req,res)=>{
     })
 })
 
-router.post('/addnotice',(req,res)=>{
-    const {title,content} = req.body 
+router.post('/addnotice', (req, res) => {
+    console.log("Notice post")
+    const { title, content, target, batch, module, date } = req.body
     console.log(req.body)
-    if(!title || !content){
-      return  res.status(422).json({error:"Plase add all the fields"})
+    if (!title || !content || !target || !date) {
+      return res.status(422).json({ error: "Please add all the fields" })
     }
-     const post = new Notice({title,content})
-    post.save().then(result=>{
-        res.json(result)
+    if (target === 'batch' && !batch) {
+      return res.status(422).json({ error: "Please select a batch" })
+    }
+    if (target === 'module' && !module) {
+      return res.status(422).json({ error: "Please select a module" })
+    }
+    const post = new Notice({ title, content, target, batch, module, date })
+    post.save().then(result => {
+      res.json(result)
     })
-    .catch(err=>{
+      .catch(err => {
         console.log(err)
-    })
-})
+      })
+  })
+  
+// router.post('/addnotice',(req,res)=>{
+//     const {title,content} = req.body 
+//     console.log(req.body)
+//     if(!title || !content){
+//       return  res.status(422).json({error:"Plase add all the fields"})
+//     }
+//      const post = new Notice({title,content})
+//     post.save().then(result=>{
+//         res.json(result)
+//     })
+//     .catch(err=>{
+//         console.log(err)
+//     })
+// })
 router.post('/addreport',(req,res)=>{
     const {title,body,postedBy} = req.body 
    

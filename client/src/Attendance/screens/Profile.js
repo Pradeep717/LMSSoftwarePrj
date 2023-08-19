@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useContext,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Switch,Route,Link,useHistory } from 'react-router-dom';
 import {userProfile,logoutUser} from "../actions/user_action"
@@ -17,12 +17,16 @@ import ViewNotice from "./AdminPage/ViewNotice"
 import Home from "./student/Home";
 import "./Profile.css";
 import 'boxicons';
-
+import { DarkModeContext } from '../../App';
 
 
 const Profile = () => {
     const dispatch = useDispatch() ;
-    const history = useHistory()
+    const history = useHistory();
+
+    const { isDarkMode } = useContext(DarkModeContext);
+    const [isSidebarOpen, setSidebarOpen] = useState(true);
+
     useEffect(()=>{
          if(localStorage.getItem("currentUser")){
              const userId = JSON.parse(localStorage.getItem("currentUser")).user._id ;
@@ -32,6 +36,10 @@ const Profile = () => {
        // dispatch(userProfile())
     },[])
     const {currentUser} = useSelector(state => state.userProfileReducer) ;
+
+    const handleSidebarToggle = () => {
+      setSidebarOpen((prevState) => !prevState);
+    };
 
     window.onload = function () {
       const sidebar = document.querySelector(".sidebar");
@@ -59,15 +67,15 @@ const Profile = () => {
 
     return (
       <div>
-      <div className="sidebar">
+      <div className={`sidebar ${isSidebarOpen ? 'open' : ''} ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
         <div class="logo_details">
-          <i class="fa fa-bars" id="btn"></i>
+          <i class="fa fa-bars" id="btn" onClick={handleSidebarToggle}></i>
         </div>
         <ul className="nav-list" style={{"paddingLeft":"0px"}}>
 
           <li>
-            <Link to={`/student/dashboard/home`} className="">
-              <i className="fas fa-calendar-plus"></i>
+          <Link to={`/student/dashboard/home`} className="">
+              <i className="fas fa-home"></i>
               <span class="link_name">Home</span>
             </Link>
             <span class="tooltip">Home</span>
@@ -82,18 +90,18 @@ const Profile = () => {
           </li>
 
           <li>
-            <Link to={`/student/dashboard/attendance`} className="">
+          <Link to={`/student/dashboard/attendance`} className="">
               
-                <i className="fas fa-calendar-plus"></i>
-                <span class="link_name">Attendance</span>
-              
-            </Link>
-            <span class="tooltip">Attendance</span>
+              <i className="fas fa-check"></i>
+              <span class="link_name">Attendance</span>
+            
+          </Link>
+          <span class="tooltip">Attendance</span>
           </li>
 
           <li>
             <Link to={`/student/dashboard/mark`} className="">
-              <i className="fas fa-poll-people"></i>
+              <i className="fas fa-list-ol"></i>
               <span class="link_name">Results</span>
             </Link>
             <span class="tooltip">Results</span>
@@ -116,19 +124,20 @@ const Profile = () => {
           </li>
 
           <li>
-            <Link to={`/student/dashboard/report`} className="">
-              <i className="fal fa-bug"></i>
-              <span class="link_name">Report</span>
+    
+            <Link to={`/student/dashboard/mark`} className="">
+              <i className="fas fa-list-ol"></i>
+              <span class="link_name">Results</span>
             </Link>
-            <span class="tooltip">Report</span>
+            <span class="tooltip">Results</span>
           </li>
 
           <li>
             <Link to={`/student/dashboard/notice`} className="">
-              <i className="fas fa-exclamation-square"></i>
-              <span class="link_name">Notice</span>
+              <i className="fa fa-sticky-note"></i>
+              <span class="link_name">Notices</span>
             </Link>
-            <span class="tooltip">Notice</span>
+            <span class="tooltip">Notices</span>
           </li>
 
           {/* <li><Link to={`/student/dashboard/payment`} className="links"><i className="fab fa-amazon-pay"></i> Payment</Link><hr /></li> */}

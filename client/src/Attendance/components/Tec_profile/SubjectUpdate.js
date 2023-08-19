@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback,useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSubAction } from "../../actions/admin_action";
 import { Link, useParams } from "react-router-dom";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { getStuBySubject, getSubByBatch } from "../../actions/student_action";
+import { DarkModeContext } from "../../../App";
+import './SubjectUpdate.css';
 
 const SubjectsMaskUpd = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { isDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     var obj = {
@@ -39,9 +42,9 @@ const SubjectsMaskUpd = (props) => {
   }
 
   return (
-    <div>
-      <table style={{ width: "80%", margin: "auto" }}>
-        <thead style={{ fontSize: "22px" }}>
+    <div className={`div-main ${isDarkMode ? "dark-mode" : ""}`}>
+      <table style={{ width: "95%", margin: "auto" }}>
+        <thead style={{background:"none"}}>
           <tr>
             <th>No.</th>
             <th>Semester</th>
@@ -63,7 +66,14 @@ const SubjectsMaskUpd = (props) => {
                   {subitem.sub_name}
                 </Link>
               </td>
-              <td>{subitem.sub_code}</td>
+              <td onClick={() => handleClick(subitem.sub_code)}>
+                <Link
+                  to={`/teacher/dashboard/SubjectAttendance/${subitem.sub_code}`}
+                >
+                  {subitem.sub_code}
+                </Link>
+              </td>
+              {/* <td>{subitem.sub_code}</td> */}
               <td>{subitem.sub_credit}</td>
               <td>{subitem.sub_type}</td>
             </tr>

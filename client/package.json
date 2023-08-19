@@ -17,6 +17,7 @@
     "materialize-css": "^1.0.0",
     "moment": "^2.29.1",
     "mongoose": "^7.4.0",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-chartjs-2": "^2.11.2",
@@ -25,6 +26,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-spinners": "^0.13.8",
     "react-stripe-checkout": "^2.6.3",
     "react-to-pdf": "0.0.14",
     "react-to-print": "^2.14.13",
@@ -32,6 +34,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "sweetalert": "^2.1.2",
+    "tesseract.js": "^4.1.1",
     "xlsx": "^0.18.5"
   },
   "scripts": {

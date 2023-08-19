@@ -72,7 +72,7 @@ router.post('/TecSign',(req,res)=>{
      return res.status(420).json({error:"please add email or password"})
   }
   Teacher.findOne({email:empolyee_id})
-  .then(savedUser=>{
+  .then(savedUser=>{   
       if(!savedUser){
          return res.status(423).json({error:"Invalid Email or password"})
       }

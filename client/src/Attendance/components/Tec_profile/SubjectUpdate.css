@@ -1,0 +1,23 @@
+.div-main{
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    width: 1150px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 450px;
+    min-height:  80vh;
+    padding: 20px 20px 20px 20px;
+}
+
+th {
+    font-size: 13px;
+    /* background-color: #1b1a1a; */
+    /* color: black; */
+}
+
+th .dark-mode{
+    color: white;
+    /* background-color: aqua; */
+}

@@ -51,6 +51,9 @@ const Routing = ()=>{
       </Route>
       <Route path="/teclogin">
         <Signin />
+      </Route> 
+      <Route path="/login">
+        <Signin />
       </Route>
       <Route path="/signup">
         <SignUp />
@@ -76,16 +79,53 @@ const Routing = ()=>{
     </Switch>
   )
 }
+export const DarkModeContext = createContext();
+
+// Dark mode reducer function to handle toggling the mode
+const darkModeReducer = (state, action) => {
+  switch (action.type) {
+    case 'TOGGLE_DARK_MODE':
+      return !state;
+    default:
+      return state;
+  }
+};
 
 function App() {
+  const [isDarkMode, dispatch] = useReducer(darkModeReducer, false);
+  useEffect(() => {
+    // Check the local storage for user preference
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'true') {
+      dispatch({ type: 'TOGGLE_DARK_MODE' });
+    }
+  }, []);
+
+  useEffect(() => {
+    // Apply the mode whenever isDarkMode changes
+    const root = document.querySelector('html');
+    if (isDarkMode) {
+      root.classList.add('dark-mode');
+    } else {
+      root.classList.remove('dark-mode');
+    }
+    // Save the user preference in local storage
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
 
   return (
   
+    <DarkModeContext.Provider value={{ isDarkMode, dispatch }}>
+  <div className='app'>
+  <div className={`app-container ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
     <BrowserRouter>
       <Navbar />
       <Routing />
       <Footer/>
     </BrowserRouter>
+    </div>
+  </div>
+  </DarkModeContext.Provider>
    
   );
 }

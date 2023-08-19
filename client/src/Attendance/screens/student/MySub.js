@@ -86,7 +86,7 @@ const MySub = () => {
                         <>
                           <input
                             type="string"
-                            style={{width:"100px",height:"30px",fontSize:"12px",alignItems:"center"}}
+                            style={{width:"120px",height:"30px",fontSize:"12px",alignItems:"center",marginLeft:"5px"}}
                             placeholder="Enrollment key"
                             value={enrollkeys[item._id]}
                             className="form-control mod_input_class"
@@ -98,7 +98,7 @@ const MySub = () => {
                             }
                           />
                           <button
-                            style={{backgroundColor:"#0c8c8c",color:"white",borderRadius:"5px",height:"30px",width:"100px"}}
+                            style={{backgroundColor:"#0c8c8c",color:"white",borderRadius:"5px",height:"35px",width:"100px",fontSize:"13px"}}
                             onClick={() => handleEnrollSubject(item)}
                           >
                             Enroll
