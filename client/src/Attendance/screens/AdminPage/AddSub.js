@@ -16,7 +16,7 @@ const AddSubject = () => {
      const[sName,setsName]=useState("")
      const[sCode,setsCode]=useState("")
      const[sKey,setsKey]=useState("")
-     const[sClass,setsClass]=useState("")
+     const[sClass,setsClass]=useState("21")
      const[sCredit,setsCredit]=useState("")
      const[sSemesrter,setsSemesrter]=useState("")
      const[selectedOption,setSelectedOption] = useState("")
@@ -82,7 +82,7 @@ const AddSubject = () => {
           </div>
           <br />
           <div className="row">
-            <div className="col" style={{ display: "flex" }}>
+            {/* <div className="col" style={{ display: "flex" }}>
               <p style={{ marginRight: "10px", fontSize: "20px" }}>Batch :</p>
               <select
                 value={sClass}
@@ -96,7 +96,7 @@ const AddSubject = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div className="col" style={{ display: "flex" }}>
               <p style={{ marginRight: "10px", fontSize: "20px" }}>
                 Semester :

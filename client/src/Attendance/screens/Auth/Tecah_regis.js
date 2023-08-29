@@ -51,7 +51,7 @@ const TeacherSignUp  = ()=>{
             </div>
             <div className="col">
                 <input type="text" class="form-control stregis_incls"   
-                value={surname} onChange={(e)=>setSurName(e.target.value)} placeholder="Sur Name" />
+                value={surname} onChange={(e)=>setSurName(e.target.value)} placeholder="Surname" />
            
             </div>
           
@@ -193,7 +193,7 @@ const TeacherSignUp  = ()=>{
             Female
           </label>
         </div>
-        <div className="radio" style={{ marginLeft:"15px" }}>
+        {/* <div className="radio" style={{ marginLeft:"15px" }}>
           <label>
             <input
               type="radio"
@@ -203,7 +203,7 @@ const TeacherSignUp  = ()=>{
             />
             Other
           </label>
-        </div>
+        </div> */}
            </div>
         </div>
         </div>

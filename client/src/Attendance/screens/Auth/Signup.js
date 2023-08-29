@@ -174,7 +174,7 @@ const SignUp = () => {
               class="form-control stregis_incls"
               value={surname}
               onChange={(e) => setSurName(e.target.value)}
-              placeholder="Sur Name"
+              placeholder="Surname"
             />
           </div>
         </div>
@@ -262,7 +262,7 @@ const SignUp = () => {
                 Female
               </label>
             </div>
-            <div className="radio" style={{ marginLeft: "15px" }}>
+            {/* <div className="radio" style={{ marginLeft: "15px" }}>
               <label>
                 <input
                   type="radio"
@@ -272,7 +272,7 @@ const SignUp = () => {
                 />
                 Other
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
         <br />

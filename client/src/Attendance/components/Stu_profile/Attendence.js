@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Pie } from 'react-chartjs-2';
-
+import { DarkModeContext } from '../../../App';
 import { userProfile } from "../../actions/user_action"
 
 import moment from 'moment'
@@ -9,6 +9,7 @@ import Titleheading from '../Titleheading';
 
 const Attendance = () => {
   const dispatch = useDispatch();
+  const { isDarkMode } = useContext(DarkModeContext);
   const [moduleFilter, setModuleFilter] = useState('');
   const [dateFilter, setDateFilter] = useState('');
   const [filteredAttendance, setFilteredAttendance] = useState([]);
@@ -46,7 +47,7 @@ const Attendance = () => {
   }
 
   return (
-    <div style={{ width: "70%", margin: "auto", backgroundColor: "white", borderRadius: "5px", marginBottom: "50px" }}>
+    <div className={`divmain ${isDarkMode ? 'd-mode' : ''}`}>
       <div style={{ marginTop: "40px", paddingTop: "20px" }}>
         <Titleheading title="Attendance" />
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%', margin: 'auto' }}>
@@ -117,7 +118,7 @@ const Attendance = () => {
           return (
             <div key={module} style={{ display: "flex", width: "80%", margin: "auto" }}>
               <h2>{module}</h2>
-              <div style={{ height: "600px", width: "600px" }}>
+              <div style={{ height: "400px", width: "600px" }}>
                 <Pie
                   data={stateData}
                   options={{
@@ -133,7 +134,7 @@ const Attendance = () => {
                   }}
                 />
               </div>
-              <div style={{ marginLeft: "50px", marginTop: "70px" }}>
+              <div style={{ marginLeft: "50px", marginTop: "50px" }}>
                 <p style={{ fontSize: "20px" }}>{Math.ceil(percentage)}%</p>
               </div>
             </div>
