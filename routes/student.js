@@ -394,9 +394,9 @@ router.post('/makeAttdence' ,async(req,res)=>{
 router.post('/uploadMark' ,async(req,res)=>{
     
   const student = await Student.find({_id:req.body.id})
-  const { id,sem,credit, smark,subject} = req.body
+  const { id,sem,credit, smark,subject,CAmark,ENDmark} = req.body
   const obj = {
-    id,sem,credit,smark,subject
+    id,sem,credit,smark,subject,CAmark,ENDmark,
   }
   student[0].markList.push(obj);
   student[0].save();

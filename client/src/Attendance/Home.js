@@ -38,7 +38,7 @@ const Home = () => {
     height: '550px',
     marginTop: '50px',
     paddingTop: '20px',
-    background: isDarkMode ? '#333' : '#0c8c8c',
+    background: isDarkMode ? '#333' : '#800000',
     borderRadius: '0px 5px 0px 0px',
     width: '13%',
     paddingLeft: '10px',

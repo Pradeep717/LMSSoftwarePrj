@@ -108,11 +108,14 @@
 // export default MySubjects;
 
 
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import { useSelector } from 'react-redux';
 import Titleheading from '../../components/Titleheading';
+import './MyTimeTable.css';
+import { DarkModeContext } from "../../../App";
 
 const MySubjects = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const [selectedSemester, setSelectedSemester] = useState(null);
   const { currentUser } = useSelector((state) => state.userProfileReducer);
   console.log("Mysub ")
@@ -134,16 +137,16 @@ const MySubjects = () => {
   }, {});
 
   return (
-    <div style={{width:"65%",margin:"auto",minHeight:"100vh",marginTop:"40px",backgroundColor:"white",borderRadius:"5px",padding:"10px",alignItems:"center",textAlign:"center",marginBottom:"60px"}}>
+    <div className={isDarkMode ? 'mainall darkmodemain' : 'mainall'}>
       <Titleheading title="My Enrolled Subjects"/>
       {subjectsBySemester &&
         Object.entries(subjectsBySemester).map(([semester, subjects]) => (
           <div key={semester} style={{alignItems:"center",justifyContent:"center",margin:"auto",padding:"auto"}}>
-            <p style={{width:"90%",color:"white",backgroundColor:"black",cursor:"pointer",margin:"auto",gap:"10px",marginBottom:"10px"}} onClick={() => setSelectedSemester(semester === selectedSemester ? null : semester)}>Semester {semester}</p>
+            <p style={{width:"100%",color:"white",backgroundColor:"black",cursor:"pointer",margin:"auto",gap:"10px",marginBottom:"10px",textAlign:"center",fontSize:"20px"}} className='textwrap' onClick={() => setSelectedSemester(semester === selectedSemester ? null : semester)}>Semester {semester}</p>
             {selectedSemester === semester && (
-              <table style={{ width: "80%", margin: "auto",marginBottom:"40px",border:"1px #e0f1f solid"}}>
-                <thead style={{ fontSize: "13px",fontFamily:"Poppins",backgroundColor:"#0c8c8c",color:"white",padding:"5px",fontWeight:"100",height:"50px" }}>
-                  <tr>
+              <table style={{ width: "90%", margin: "auto",marginBottom:"40px",border:"1px #e0f1f solid"}}>
+                <thead style={{ fontSize: "13px",fontFamily:"Poppins",backgroundColor:"#800000",color:"white",padding:"5px",fontWeight:"30",height:"50px" }}>
+                  <tr style={{fontSize:"20px"}}>
                     <th>Subject Code</th>
                     <th>Subject Name</th>
                     <th>Credit</th>

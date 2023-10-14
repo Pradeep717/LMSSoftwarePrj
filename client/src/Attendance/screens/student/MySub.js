@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSubAction } from "../../actions/admin_action";
 import { enrollSubjectAction } from "../../actions/student_action";
 import Titleheading from "../../components/Titleheading";
 // import { useState } from "react";
+import './MyTimeTable.css';
+import { DarkModeContext } from "../../../App";
 
 const MySub = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const [enrollkeys, setEnrollkeys] = useState({});
   const [enrolledSubjects, setEnrolledSubjects] = useState([]);
 
@@ -43,7 +46,7 @@ const MySub = () => {
   };
 
   return (
-    <div style={{width:"65%",margin:"auto",minHeight:"100vh",marginTop:"40px",backgroundColor:"white",borderRadius:"5px",padding:"10px",alignItems:"center",textAlign:"center",marginBottom:"60px"}}>
+    <div className={isDarkMode ? 'mainall darkmodemain' : 'mainall'}>
       <Titleheading  title="Module Enrolment"/>
       <table style={{ width: "95%", margin: "auto",marginTop:"50px"}}>
         <thead style={{ fontSize: "13px",backgroundColor:"black",color:"white",padding:"8px",height:"30px"}}>

@@ -18,6 +18,12 @@ const StuList = ({ students, sClass, mark }) => {
   const [subject, setSubject] = useState("");
   const [credit, setCredit] = useState("");
   const [smark, setMark] = useState("");
+  //
+  const [CAmark, setCAmark] = useState("");
+  const [ENDmark, setENDmark] = useState("");
+
+  //
+
 
   const handleClose = () => setShow(false);
   const handleShow = (item) => {
@@ -38,9 +44,11 @@ const StuList = ({ students, sClass, mark }) => {
     const obj = {
       id,
       sem,
-      credit,
+      credit, 
       smark,
       subject,
+      CAmark,
+      ENDmark,
     };
     var another = {
       clsName: sClass,
@@ -99,10 +107,13 @@ const StuList = ({ students, sClass, mark }) => {
       >
         <thead style={{ fontSize: "22px" }}>
           <tr>
-            <th>Name</th>
+            <th>Name3</th>
             {/* <th>Roll_No</th> */}
             <th>Index_No</th>
             <th>Addmision year</th>
+            {/* <th>CAmarks</th>
+            <th>ENDmarks</th> */}
+
             <th>Marks</th>
           </tr>
         </thead>

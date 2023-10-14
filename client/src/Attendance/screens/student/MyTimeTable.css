@@ -1,0 +1,18 @@
+.mainall{
+    width: 65%;
+    margin: auto;
+    background-color:white;
+    padding: 40px;
+    margin-top: 40px;
+    min-height:100vh;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.darkmodemain{
+    background-color: #333;
+    color: white;
+}
+.darkmodemain td{
+    color: white;
+}

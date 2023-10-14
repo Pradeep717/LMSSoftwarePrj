@@ -14,7 +14,7 @@ const BatchChart = ({ batchCounts }) => {
       {
         label: 'Student Count per Batch',
         data: studentCounts,
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        backgroundColor: 'rgba(128, 0, 0, 1)',
       },
     ],
   };

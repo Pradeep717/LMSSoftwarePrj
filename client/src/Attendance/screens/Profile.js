@@ -99,13 +99,6 @@ const Profile = () => {
           <span class="tooltip">Attendance</span>
           </li>
 
-          <li>
-            <Link to={`/student/dashboard/mark`} className="">
-              <i className="fas fa-list-ol"></i>
-              <span class="link_name">Results</span>
-            </Link>
-            <span class="tooltip">Results</span>
-          </li>
 
           <li>
             <Link to={`/student/dashboard/subject`} className="">

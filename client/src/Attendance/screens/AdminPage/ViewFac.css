@@ -2,28 +2,22 @@
     background-color: #333;
     color: white;
 }
-.delbtn{
-    background-color: #0c8c8c;
-    color: #FFFFFF;
-    border-radius: 5px;
-    margin-left: 10px;
-    width: 80px;
-    height: 40px;
-    border: none;
 
+.delbtn{
+  display: flex;
+  background-color: #800000;
+  color: #FFFFFF;
+  border-radius: 5px;
+  width: 68px;
+  font-size: 11px;
+  text-align: center;
+  margin: 0px 0px;
+  height: 30px;
+  border: none;
 }
 .delbtn:hover{
-    background-color: #0f8282;
+  background-color: #ffc107;
 }
-/* Add this CSS to your existing stylesheet or create a new one */
-
-/* Styling for the filter controls */
-/* Add this CSS to your existing stylesheet or create a new one */
-
-/* Styling for the filter controls */
-/* Add this CSS to your existing stylesheet or create a new one */
-
-/* Styling for the filter controls */
 .filter-controls {
     display: flex;
     justify-content: center; /* Center the controls horizontally */

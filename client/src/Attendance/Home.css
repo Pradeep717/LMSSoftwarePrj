@@ -13,7 +13,7 @@ body {
 .sidebar {
   min-height: 92vh;
   width: 48px;
-  background-color: #0c8c8c;
+  background-color: #800000;
   /* padding: 5px; */
   z-index: 99;
   border-radius: 0px 5px 5px 0px;
@@ -55,7 +55,7 @@ body {
   top: -20px;
   left: calc(100% + 15px);
   z-index: 3;
-  background-color: var(--color-white);
+  background-color: black;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   padding: 6px 14px;
   font-size: 15px;
@@ -135,7 +135,8 @@ body {
 
 .sidebar li a:hover::after {
   transform: scaleX(1);
-  background-color: #39b8b8; /* Change background color on hover */
+  background-color: #ffc107;
+  color: black; /* Change background color on hover */
 }
 
 .sidebar li a .link_name {
@@ -213,6 +214,6 @@ body {
 }
 
 .sideitems:hover{
-  background-color: #39b8b8;
+  background-color: #ffc107;
   transition: 0.8s ease;
 }

@@ -5,8 +5,8 @@ import AdminIMage from "../Images/admin2.jpg";
 import TeacherImage from "../Images/backgg.JPG";
 import backg from "../Images/backg.jpg";
 import "./Landing.css";
-import image1 from "../Images/1.jpg";
-import image2 from "../Images/2.jpg";
+import image1 from "../Images/1.jpeg";
+// import image2 from "../Images/2.jpg";
 import { DarkModeContext } from '../../App';
 
 const Landing = () => {
@@ -35,7 +35,7 @@ const Landing = () => {
               <img class="d-block w-100" src={image1} alt="First slide" />
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src={image2} alt="Second slide" />
+              {/* <img class="d-block w-100" src={image2} alt="Second slide" /> */}
             </div>
           </div>
         </div>

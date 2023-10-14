@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSubAction } from "../../actions/admin_action";
 import Titleheading from "../../components/Titleheading";
+import { DarkModeContext } from "../../../App";
+import './MyTimeTable.css';
 
 const MyTimeTable = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllSubAction());
@@ -32,18 +35,8 @@ const MyTimeTable = () => {
   sepSub();
 
   return (
-    <div
-      style={{
-        width: "65%",
-        margin: "auto",
-        backgroundColor: "white",
-        padding: "40px",
-        marginTop: "40px",
-        minHeight: "90vh",
-        marginBottom: "40px",
-        borderRadius: "5px",
-      }}
-    >
+    <div className={isDarkMode ? 'mainall darkmodemain' : 'mainall'}>
+
       <Titleheading title="Academic Timetable" />
       <table className="table table-bordered table-responsive-sm">
         <thead>
@@ -82,13 +75,13 @@ const MyTimeTable = () => {
             }}
           >
             <td>Monday</td>
-            <td> {TheroSub[0]} </td>
-            <td>{TheroSub[1]}</td>
+            <td> Computer Architecture </td>
+            <td>Computer Architecture</td>
 
             <td>{PracSub[0]}</td>
             <td>Break</td>
-            <td>{TheroSub[2]}</td>
-            <td>{TheroSub[3]}</td>
+            <td>Electric Machines II</td>
+            <td>Electric Machines II</td>
             <td>{PracSub[1]}</td>
           </tr>
 
@@ -103,13 +96,13 @@ const MyTimeTable = () => {
           >
             <td>Tuesday</td>
             <td> {TheroSub[0]} </td>
-            <td>{TheroSub[1]}</td>
+            <td>Computer Architecture</td>
 
             <td>{PracSub[0]}</td>
             <td>Break</td>
             <td>{TheroSub[2]}</td>
-            <td>{TheroSub[3]}</td>
-            <td>{PracSub[1]}</td>
+            <td>Data Strcutures</td>
+            <td>Data Strcutures</td>
           </tr>
 
           <tr
@@ -122,12 +115,12 @@ const MyTimeTable = () => {
             }}
           >
             <td>Wednesday</td>
-            <td> {TheroSub[0]} </td>
-            <td>{TheroSub[1]}</td>
+            <td> Data Strcutures </td>
+            <td>Computer Architecture</td>
 
             <td>{PracSub[0]}</td>
             <td>Break</td>
-            <td>{TheroSub[2]}</td>
+            <td>Electric Machines II</td>
             <td>{TheroSub[3]}</td>
             <td>{PracSub[1]}</td>
           </tr>
@@ -142,14 +135,14 @@ const MyTimeTable = () => {
             }}
           >
             <td>Thursday</td>
-            <td> {TheroSub[0]} </td>
-            <td>{TheroSub[1]}</td>
+            <td> Electric Machines II </td>
+            <td>Database Systems</td>
 
             <td>{PracSub[0]}</td>
             <td>Break</td>
             <td>{TheroSub[2]}</td>
             <td>{TheroSub[3]}</td>
-            <td>{PracSub[1]}</td>
+            <td>Electric Machines II</td>
           </tr>
 
           <tr
@@ -165,10 +158,10 @@ const MyTimeTable = () => {
             <td> {TheroSub[0]} </td>
             <td>{TheroSub[1]}</td>
 
-            <td>{PracSub[0]}</td>
+            <td>Electric Machines II</td>
             <td>Break</td>
-            <td>{TheroSub[2]}</td>
-            <td>{TheroSub[3]}</td>
+            <td>Database Systems</td>
+            <td>Database Systems</td>
             <td>{PracSub[1]}</td>
           </tr>
         </tbody>

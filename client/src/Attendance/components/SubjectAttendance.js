@@ -83,6 +83,7 @@ const SubjectAttendance = (props) => {
           Index_No: student.Roll_No,
           Addmision_year: student.addmision_year,
           Marks: marks ? marks.smark : "N/A", // add marks data here
+          
         };
       });
 

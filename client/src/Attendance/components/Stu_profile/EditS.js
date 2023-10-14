@@ -1,15 +1,15 @@
 import { set } from 'mongoose'
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import {Link,useHistory} from 'react-router-dom'
 import {userProfile} from "../../actions/user_action"
 import {updateProfileAction} from "../../actions/student_action"
 import Titleheading from "../Titleheading" 
+import { DarkModeContext } from '../../../App'
+import './EditS.css'
 
 const EditS  = ()=>{ 
-
-    
-  
+    const { isDarkMode } = useContext(DarkModeContext);
     const history = useHistory()
     const [name,setName] = useState("")
     const[surname,setSurName]=useState("")
@@ -26,12 +26,8 @@ const EditS  = ()=>{
     const [mobile,setMobile] = useState("")
     const[address,setAddress]=useState("")
     const[userId,setUserId] = useState("")
-    
- 
     const dispatch = useDispatch();
 
-
-  
     useEffect(()=>{
          if(localStorage.getItem("currentUser")){
            const user = JSON.parse(localStorage.getItem("currentUser")).user ;
@@ -72,8 +68,8 @@ const EditS  = ()=>{
     }
 
    return (
-      <div className='col-9' style={{margin:'auto',marginBottom:"130px"}}>
-          <div className="card px-5 py-2" style={{margin:"5%"}}>
+      <div style={{minHeight:"120vh"}}>
+          <div className={`mainprof ${isDarkMode ? "darkmodeprof" : ""}`} >
             <Titleheading title="Edit Profile" />
            
          

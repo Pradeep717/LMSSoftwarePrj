@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { useDispatch } from 'react-redux'
 import {Link,useHistory} from 'react-router-dom'
 import {loginUser} from '../actions/user_action'
@@ -10,6 +10,7 @@ import TeacherImage from "../Images/teach.png"
 import { DotLoader, HashLoader } from 'react-spinners';
 import LoadingOverlay from './LoadingOverlay'; // Import the LoadingOverlay component
 import './Signin.css'
+import { DarkModeContext } from '../../App';
 
 const SignIn  = ()=>{
     const history = useHistory()
@@ -17,6 +18,7 @@ const SignIn  = ()=>{
     const [password,setPasword] = useState("")
     const [email,setEmail] = useState("")
     const [userItem,setuserItem]=useState("")
+    const { isDarkMode } = useContext(DarkModeContext);
  
     const dispatch = useDispatch()
     
@@ -52,10 +54,10 @@ const SignIn  = ()=>{
 
     
    return (
-      <div>
-        <div className='col-6' style={{margin:"auto",minHeight:"100vh"}}>
-          <div className="card px-5 py-2" style={{margin:"3%"}}>
-            <Link to="/landing"><i className="far fa-arrow-square-left fa-2x" style={{paddingTop:"5px"}}></i></Link>
+      <div style={{minHeight:"100vh"}}>
+        <div className={isDarkMode ? 'signmain darkmodemain' : 'signmain'}>
+          <div >
+            <Link to="/landing"><i className="far fa-arrow-square-left fa-2x" style={{paddingTop:"5px",marginBottom:"20px",color:"#800000"}}></i></Link>
             {history.location.pathname == "/stulogin" && <> 
             <h4 style={{margin:"auto",marginBottom:"10px"}}> Student Login</h4>
             <img src={StudentIMage} alt="StudentIMage" className='landing_img' />
@@ -105,7 +107,7 @@ const SignIn  = ()=>{
            <button className='btn' onClick={() => handleRequest()} >Signin</button>
            {loading && (
             <div className="loading-overlay">
-              <HashLoader color="#36d7b7" loading={loading} size={40} />
+              <HashLoader color="#ffc107" loading={loading} size={40} />
             </div>
           )}
       </div>

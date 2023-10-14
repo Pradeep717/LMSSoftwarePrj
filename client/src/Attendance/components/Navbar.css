@@ -1,20 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Philosopher&family=Tinos:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Philosopher&family=Tinos:wght@400;700&display=swap');
 .nav{
-    position:sticky;
+    position: relative;
+    transition: top 2s ease-in;
 
 }
+.nav.sticky {
+    position: fixed;
+    top: 0;
+    /* Add background color or other styles when sticky */
+    background-color: #800000;
+    width: 100%;
+    z-index: 999;
+    transition: top 2s ease-in , position 0.3s ease;;
+    
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    /* Other styles */
+  }
 
 .nav-container{
     padding: 5px;
     width: 100%;
-    background-color: #0c8c8c;
+    background-color: #800000;
     height: 65px;
     margin: 0%;
     display: flex;
-    position: sticky;
+    /* position: sticky; */
     justify-content: space-between;
-    
 }
 
 .dark-mode {
@@ -26,7 +38,7 @@
   
   .light-mode {
     /* Styles for light mode */
-    background-color: #0c8c8c ;
+    background-color: #800000 ;
     transition: background-color 0.5s ease;
     color: #f5f5f5;
   }
@@ -81,7 +93,7 @@
     cursor: pointer;
 }
 .profile-icon:hover{
-    background: #39b8b8;
+    background: #ffc107;
     opacity: 60%;
     transition: 0.5s ease;
     
@@ -128,6 +140,7 @@
     background-color: #333;
     color: #f5f5f5;
 }
+
 .drop-menu::before{
     content: '';
     position: absolute;
@@ -194,7 +207,7 @@ h3 span{
 
 .drop-menu ul li:hover a{
     cursor: pointer;
-    color: #39b8b8;
+    color: #ffc107;
 }
 
 .dropItem img{
@@ -252,7 +265,7 @@ h3 span{
     
 }
 .dropdown-menu ul li:hover{
-    background-color: #0c8c8c;
+    background-color: #ffc107;
 
     transition: 20ms;
 }

@@ -7,7 +7,7 @@ const LoadingOverlay = ({ loading }) => {
     loading && (
       <div className="loading-overlay">
         <div className="loading-spinner">
-          <HashLoader color={'#ffffff'} loading={loading} size={40} />
+          <HashLoader color={'#800000'} loading={loading} size={40} />
         </div>
       </div>
     )

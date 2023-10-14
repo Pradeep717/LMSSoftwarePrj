@@ -4,7 +4,7 @@
     width: 100%;
     position: sticky;
     text-align: center;
-    background-color: #0c8c8c;
+    background-color: #800000;
     height: auto;
     min-height: 200px;
 }
@@ -54,9 +54,9 @@
     color: bisque;
 }
 .columns ul li a p:hover{
-    color: #21f0f0;
+    color: #ffc107;
     text-decoration: underline;
-    transition: 0.5s ease;
+    transition: 0.1s ease;
 }
 .columns ul li a p{
     margin-top: 5px;
@@ -103,7 +103,7 @@ hr{
     color: #ffffff;
 }
 .custom-icon1:hover{
-    color: #354bf8;
+    color: #ffc107;
     transition: 0.25s ease;
     font-size: 36px;
 }
@@ -112,7 +112,7 @@ hr{
     color: #ffffff;
 }
 .custom-icon2:hover{
-    color: #1f7bcc;
+    color: #ffc107;
     transition: 0.25s ease;
     font-size: 36px;
 }
@@ -121,7 +121,7 @@ hr{
     color: #ffffff;
 }
 .custom-icon3:hover{
-    color: #da1c1c;
+    color: #ffc107;
     transition: 0.25s ease;
     font-size: 36px;
 }

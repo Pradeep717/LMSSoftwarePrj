@@ -33,7 +33,7 @@
     border-radius: 3px;
     border: none;
     padding: 5px all;
-    background-color: #0c8c8c;
+    background-color: #9b7501;
     color: white;
     font-size: 15px;
 }
@@ -41,7 +41,7 @@
     text-align: center;
 }
 .regbtn:hover{
-    background-color: #085b5b;
+    background-color: #ffc107;
     transition: 0.8s;
 }
 
@@ -53,7 +53,7 @@
     border-radius: 3px;
     border: none;
     padding: 5px all;
-    background-color: #0a8877;
+    background-color: #800000;
     color: white;
     font-size: 15px;
 }
@@ -65,7 +65,7 @@
     border-radius: 3px;
     border: none;
     padding: 5px all;
-    background-color: #045063;
+    background-color: #800000;
     color: white;
     font-size: 15px;
 
@@ -85,11 +85,11 @@
     font-size: 20px;
 }
 .dwnbtn:hover{
-    background-color: #096e61;
+    background-color: #ffc107;
     transition: 1s;
 }
 .uplbtn:hover{
-    background-color: #033a48;
+    background-color: #ffc107;
     transition: 1s;
 }
   

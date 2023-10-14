@@ -166,12 +166,13 @@ const SubjectData = (props) => {
         const marks = student.markList.find(
           (mark) => mark.subject == props.match.params.id
         );
-
         return {
           Name: student.name,
           Index_No: student.Roll_No,
           Addmision_year: student.addmision_year,
           Marks: marks ? marks.smark : "N/A", // add marks data here
+          CA_Marks:marks ? marks.CA_Marks : "N/A",
+          End_Marks:marks ? marks.End_Marks : "N/A"
         };
       });
 
@@ -383,6 +384,8 @@ const SubjectData = (props) => {
               <th>Index_No</th>
               <th>Addmision year</th>
               <th>Marks</th>
+              <th>CA_Marks</th>
+              <th>End_Marks</th>
             </tr>
           </thead>
           <tbody>
@@ -392,6 +395,8 @@ const SubjectData = (props) => {
                 <td>{student.Index_No}</td>
                 <td>{student.Addmision_year}</td>
                 <td>{student.Marks}</td>
+                <td>{student.CA_Marks}</td>
+                <td>{student.End_Marks}</td>
               </tr>
             ))}
           </tbody>

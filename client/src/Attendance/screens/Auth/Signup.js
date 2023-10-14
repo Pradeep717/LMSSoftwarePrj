@@ -180,7 +180,7 @@ const SignUp = () => {
         </div>
         <br />
         <div className="row">
-          <div className="col">
+          {/* <div className="col">
             <input
               type="text"
               class="form-control stregis_incls"
@@ -188,8 +188,8 @@ const SignUp = () => {
               onChange={(e) => setMotherName(e.target.value)}
               placeholder="Mother Name"
             />
-          </div>
-          <div className="col">
+          </div> */}
+          {/* <div className="col">
             <input
               type="text"
               class="form-control stregis_incls"
@@ -197,7 +197,7 @@ const SignUp = () => {
               onChange={(e) => setFatherName(e.target.value)}
               placeholder="Father Name"
             />
-          </div>
+          </div> */}
         </div>
         <br />
         <div className="row">

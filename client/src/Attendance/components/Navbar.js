@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector } from "react-redux"
 
-import Logo from "../Images/Ruh_logo.png"
+import Logo from "../Images/Uni_logo.png"
 import './Navbar.css'
 import ProfileIcon from '../Images/profileicon.png'
 import SettingsIcon from '../Images/settingicon.png'
@@ -20,6 +20,23 @@ const NavBar = ({user}) => {
 
  
   const { isDarkMode, dispatch: darkModeDispatch } = useContext(DarkModeContext);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      // Adjust the value below to determine when the Navbar becomes sticky
+      const threshold = 200;
+
+      setIsSticky(scrollTop > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMode = () => {
     darkModeDispatch({ type: 'TOGGLE_DARK_MODE' });
@@ -30,11 +47,6 @@ const NavBar = ({user}) => {
   console.log("233")
   // console.log(currentUser.user);
  
-  
- 
-
-  
-
   const dispatch = useDispatch() ;
     useEffect(()=>{
          if(localStorage.getItem("currentUser")){
@@ -67,7 +79,7 @@ const NavBar = ({user}) => {
   }
 
   return (
-    <nav className={isDarkMode ? 'nav dark-mode' : 'nav light-mode'}>
+    <nav className={`nav ${isSticky ? 'sticky' : ''} ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className={isDarkMode ? 'nav-container dark-mode' : 'nav-container light-mode'} ref={menuref}>
         <img src={Logo} className='logo' style={{cursor:"pointer"}}/>
         <div className="names">
